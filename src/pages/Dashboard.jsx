@@ -2,7 +2,7 @@
 
 import DashboardDetails from '../components/DashboardDetails'
 import Navigation from '../components/Navigation'
-import { BarChart, YAxis, XAxis, Tooltip, CartesianGrid, Bar, ResponsiveContainer, PieChart, Pie } from 'recharts';
+import { BarChart, YAxis, XAxis, Tooltip, CartesianGrid, Bar, ResponsiveContainer, PieChart, Pie, AreaChart, Area } from 'recharts';
 
 const data = [
     { name: 'Janeiro', Receitas: 2400, Despesas: 4000 },
@@ -20,10 +20,41 @@ const data = [
 ];
 
 const datay = [
-    { name: 'Group A', value: 400 },
-    { name: 'Group B', value: 300 },
-    { name: 'Group C', value: 300 },
-    { name: 'Group D', value: 200 },
+    {
+        name: 'Categoria A',
+        Receitas: 4000,
+        Despesas: 2400,
+    },
+    {
+        name: 'Categoria B',
+        Receitas: 3000,
+        Despesas: 1398,
+    },
+    {
+        name: 'Categoria C',
+        Receitas: 9800,
+        Despesas: 2800,
+    },
+    {
+        name: 'Categoria D',
+        Receitas: 2780,
+        Despesas: 3908,
+    },
+    {
+        name: 'Categoria E',
+        Receitas: 4800,
+        Despesas: 1890,
+    },
+    {
+        name: 'Categoria F',
+        Receitas: 3890,
+        Despesas: 2400,
+    },
+    {
+        name: 'Categoria G',
+        Receitas: 3490,
+        Despesas: 1300,
+    },
 ];
 
 const Dashboard = () => {
@@ -31,28 +62,45 @@ const Dashboard = () => {
         <div>
             <Navigation />
             <DashboardDetails>
-                <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
+                <div className="content">
+                    <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
-                <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
-                <div className="first-graph">
-                    <BarChart width={1300} height={300} data={data}>
-                        <XAxis dataKey="name" stroke="var(--white)" />
-                        <YAxis />
-                        <Tooltip />
-                        <CartesianGrid stroke="var(--gray)" strokeDasharray="5 5" />
-                        <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
-                        <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
-                    </BarChart>
+                    <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
+                    <div className="first-graph">
+                        <BarChart width={1270} height={300} data={data}>
+                            <XAxis dataKey="name" stroke="var(--white)" />
+                            <YAxis />
+                            <Tooltip />
+                            <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
+                            <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
+                            <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
+                        </BarChart>
+                    </div>
+
+                    <h4>Média de Gasto por Categoria Mensal</h4>
+                    <div style={{ width: '100%', height: 300 }}>
+                        <ResponsiveContainer width="100%" height="100%">
+                            <AreaChart
+                                width={500}
+                                height={400}
+                                data={datay}
+                                margin={{
+                                    top: 10,
+                                    right: 30,
+                                    left: 0,
+                                    bottom: 0,
+                                }}
+                            >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
+                                <Tooltip />
+                                <Area type="monotone" dataKey="Despesas" stackId="1" stroke="var(--purple)" fill="var(--purple)" />
+                                <Area type="monotone" dataKey="Receitas" stackId="1" stroke="var(--blue)" fill="var(--blue)" />
+                            </AreaChart>
+                        </ResponsiveContainer>
+                    </div>
                 </div>
-
-                {/* <h4>Média de Gasto por Categoria</h4>
-                <div style={{ width: '100%', height: 300 }}>
-                    <ResponsiveContainer>
-                        <PieChart>
-                            <Pie dataKey="value" data={datay} fill="var(--green)" label />
-                        </PieChart>
-                    </ResponsiveContainer>
-                </div> */}
             </DashboardDetails>
         </div>
     )
