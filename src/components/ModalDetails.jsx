@@ -6,7 +6,7 @@ const ModalDetails = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -40,7 +40,7 @@ const ModalDetails = styled.div`
         }
 
         input, select, input[type="date"] {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 16px;
             padding: 6px;
             border: 1px solid var(--white);
