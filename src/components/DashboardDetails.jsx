@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const DashboardDetails = styled.div`
     margin-left: 20rem;
-    padding: 2rem;
+    padding: 1rem 2rem;
 
     h4 {
         margin-top: 1rem;
@@ -16,6 +16,11 @@ const DashboardDetails = styled.div`
     .content {
         position: fixed;
         z-index: 1;
+
+        .advice {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
     }
 `
 

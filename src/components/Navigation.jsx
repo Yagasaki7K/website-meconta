@@ -38,14 +38,17 @@ const Navigation = () => {
         <SidebarMenuDetails>
             <ul>
                 <a href='/dashboard'><img src="/logo.png" alt="Logotipo" /></a>
-                <a href='/dashboard'><li><i className="uil uil-chart-growth" /> Central de Relatórios</li></a>
+                <li className='user'><i className="uil uil-user" /> Olá, Anderson</li>
+                <a href='/dashboard'><li><i className="uil uil-chart-growth" /> Central de Gráficos</li></a>
                 <a href='/dashboard'><li><i className="uil uil-tag-alt" /> Cadastrar Categorias</li></a>
                 <a onClick={handleModalAdded}><li ><i className="uil uil-plus-circle" /> Adicionar Entrada</li></a>
                 <a onClick={handleModalRemoved}><li><i className="uil uil-minus-circle" /> Adicionar Saída</li></a>
-                <a href='/dashboard'><li><i className="uil uil-file-search-alt" /> Gerar PDF</li></a>
+                <a href='/dashboard'><li><i className="uil uil-file-search-alt" /> Lista de Gastos</li></a>
                 <li><i className="uil uil-signout" /> Logout</li>
             </ul>
-            <p>v20240207 - Kindred Software</p>
+            <div className="footer">
+                <p>v20240207 - Kindred Software</p>
+            </div>
 
             <div className="sideMenu">
                 {hiddenUserMenu ? (

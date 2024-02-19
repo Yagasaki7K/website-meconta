@@ -57,7 +57,18 @@ const datay = [
     },
 ];
 
+
 const Dashboard = () => {
+    const date = new Date(); // A data é criada com o formato: ano, mês (0-11), dia
+    const dia = date.getDate();
+    const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+    const mes = meses[date.getMonth()];
+    const ano = date.getFullYear();
+    const hora = String(date.getHours()).padStart(2, '0');
+    const minutos = String(date.getMinutes()).padStart(2, '0');
+    const saudacao = hora >= 6 && hora < 12 ? 'Bom dia!' : hora >= 12 && hora < 18 ? 'Boa tarde!' : hora >= 18 && hora <= 23 ? 'Boa noite!' : 'Boa noite!';
+
+    const dataFormatada = `${dia} de ${mes} de ${ano}, agora são ${hora} horas e ${minutos} minutos`;
     return (
         <div>
             <Navigation />
@@ -65,11 +76,14 @@ const Dashboard = () => {
                 <div className="content">
                     <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
+                    <p>{saudacao}  Hoje é {dataFormatada}.</p>
+
                     <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
+                    <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
                     <div className="first-graph">
-                        <BarChart width={1270} height={300} data={data}>
+                        <BarChart width={1245} height={300} data={data}>
                             <XAxis dataKey="name" stroke="var(--white)" />
-                            <YAxis />
+                            <YAxis stroke="var(--white)" />
                             <Tooltip />
                             <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
                             <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
@@ -78,25 +92,16 @@ const Dashboard = () => {
                     </div>
 
                     <h4>Média de Gasto por Categoria Mensal</h4>
+                    <i className="advice">Iremos mostrar apenas as primeiras sete categorias cadastradas. Para ter um relatório completo, gere um PDF.</i>
                     <div style={{ width: '100%', height: 300 }}>
                         <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart
-                                width={500}
-                                height={400}
-                                data={datay}
-                                margin={{
-                                    top: 10,
-                                    right: 30,
-                                    left: 0,
-                                    bottom: 0,
-                                }}
-                            >
+                            <AreaChart width={500} height={400} data={datay} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                                 <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="name" />
-                                <YAxis />
+                                <XAxis dataKey="name" stroke="var(--white)" />
+                                <YAxis stroke="var(--white)" />
                                 <Tooltip />
-                                <Area type="monotone" dataKey="Despesas" stackId="1" stroke="var(--purple)" fill="var(--purple)" />
-                                <Area type="monotone" dataKey="Receitas" stackId="1" stroke="var(--blue)" fill="var(--blue)" />
+                                <Area type="monotone" dataKey="Despesas" stackId="1" stroke="var(--red)" fill="var(--red)" />
+                                <Area type="monotone" dataKey="Receitas" stackId="1" stroke="var(--green)" fill="var(--green)" />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>

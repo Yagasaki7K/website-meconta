@@ -29,6 +29,22 @@ const SidebarMenuDetails = styled.div`
             margin: 1.5rem 3rem;
         }
 
+        h4 {
+            margin-left: 3.5rem;
+            font-size: 18px;
+        }
+
+        .user {
+            background: transparent;
+            cursor: none;
+            color: var(--green);
+
+            &:hover {
+                background: transparent;
+                filter: brightness(100%);
+            }
+        }
+
         li {
             padding: 1rem 0;
             
@@ -39,6 +55,7 @@ const SidebarMenuDetails = styled.div`
                 background: var(--background);
                 cursor: pointer;
                 color: var(--green);
+                transition: 0.8s;
             }
 
             i {
