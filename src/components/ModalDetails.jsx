@@ -1,30 +1,33 @@
 import styled from "styled-components";
 
 const ModalDetails = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
+    background: var(--background);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 14.9rem;
+    padding-bottom: 14.9rem;
+    overflow: hidden;
 
     .modal-content {
-        background: var(--background);
+        background: var(--background-alt);
         border-radius: 8px;
         padding: 20px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        max-width: 80%; 
-        max-height: 80%;
         overflow-y: auto;
         display: flex;
         justify-content: center;
-        align-items: center;
-        text-align: center;
+        align-items: left;
+        text-align: left;
         flex-direction: column;
+
+        .less {
+            color: var(--red);
+        }
+
+        .plus {
+            color: var(--green);
+        }
 
         h3 {
             font-size: 1.8rem;
@@ -39,11 +42,11 @@ const ModalDetails = styled.div`
             margin-top: 1rem;
         }
 
-        input, select, input[type="date"] {
+        input, select, input {
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
             padding: 6px;
-            border: 1px solid var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             outline: none;
             transition: border-color 0.3s ease;
@@ -56,7 +59,7 @@ const ModalDetails = styled.div`
         }
 
         input:focus, select:focus, input[type="date"]:focus {
-            border-color: var(--white);
+            border: 1px solid rgba(0, 0, 0, 0.2);
         }
 
         input.error, select.error, input[type="date"].error {
@@ -68,10 +71,10 @@ const ModalDetails = styled.div`
         }
 
         button {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 14px;
             padding: 10px 20px;
-            color: #fff;
+            color: var(--white);
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -83,6 +86,7 @@ const ModalDetails = styled.div`
 
         .buttons {
             display: flex;
+            justify-content: center;
             flex-direction: row;
         }
         
@@ -91,7 +95,7 @@ const ModalDetails = styled.div`
         }
 
         .clear {
-            background: var(--orange);
+            background: var(--yellow);
             margin-left: 0.5rem;
         }
     }

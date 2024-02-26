@@ -12,6 +12,11 @@ const SidebarMenuDetails = styled.div`
     left: 0;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 23px 23px;
 
+    @media (max-width: 1024px) {
+        background: transparent;
+        width: 0.1rem;
+    }
+
     a, li, p {
         text-decoration: none;
         color: #fff;
@@ -23,6 +28,10 @@ const SidebarMenuDetails = styled.div`
         padding: 0;
         margin: 0;
         width: 100%;
+
+        @media (max-width: 1024px) {
+            display: none;
+        }
 
         img {
             width: 15rem;
@@ -61,11 +70,23 @@ const SidebarMenuDetails = styled.div`
             i {
                 border: none;
                 margin: 0 0.5rem 0 3.5rem;
-            }
+            }            
         }
+
+        .active {
+                background: var(--background);
+                cursor: pointer;
+                color: var(--green);
+            }
 
         :nth-child(2) {
             border-top: 1px solid var(--background);
+        }
+    }
+
+    .footer {
+        @media (max-width: 1024px) {
+            display: none;
         }
     }
 
@@ -79,7 +100,7 @@ const SidebarMenuDetails = styled.div`
     }
 
     .sideMenu {
-        .addBtn, .removeBtn, .whatsappBtn, .logoBtn {
+        .addBtn, .removeBtn, .whatsappBtn, .logoBtn, .costsBtn {
             position: fixed;
             width: 60px;
             height: 60px;
@@ -97,19 +118,25 @@ const SidebarMenuDetails = styled.div`
             text-align: center;
         }
 
-        .addBtn:hover, .removeBtn:hover, .whatsappBtn:hover, .logoBtn:hover {
+        .addBtn:hover, .removeBtn:hover, .whatsappBtn:hover, .logoBtn:hover, .costsBtn:hover {
             filter: brightness(70%)
+        }
+
+        .costsBtn {
+            right: 30px;
+            bottom: 100px;
+            background: var(--blue);
         }
 
         .addBtn {
             right: 30px;
-            bottom: 170px;
+            bottom: 240px;
             background: var(--green);
         }
 
         .removeBtn {
             right: 30px;
-            bottom: 100px;
+            bottom: 170px;
             background: var(--red);
         }
 
