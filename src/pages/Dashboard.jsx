@@ -21,39 +21,34 @@ const data = [
 
 const datay = [
     {
-        name: 'Categoria A',
+        name: 'Moradia',
         Receitas: 4000,
         Despesas: 2400,
     },
     {
-        name: 'Categoria B',
+        name: 'Alimentação',
         Receitas: 3000,
         Despesas: 1398,
     },
     {
-        name: 'Categoria C',
+        name: 'Transporte',
         Receitas: 9800,
         Despesas: 2800,
     },
     {
-        name: 'Categoria D',
+        name: 'Saúde',
         Receitas: 2780,
         Despesas: 3908,
     },
     {
-        name: 'Categoria E',
+        name: 'Educação',
         Receitas: 4800,
         Despesas: 1890,
     },
     {
-        name: 'Categoria F',
+        name: 'Diversos',
         Receitas: 3890,
         Despesas: 2400,
-    },
-    {
-        name: 'Categoria G',
-        Receitas: 3490,
-        Despesas: 1300,
     },
 ];
 
@@ -81,7 +76,7 @@ const Dashboard = () => {
                     <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
                     <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
                     <div className="first-graph">
-                        <BarChart width={1245} height={300} data={data}>
+                        <BarChart width={1300} height={300} data={data}>
                             <XAxis dataKey="name" stroke="var(--white)" />
                             <YAxis stroke="var(--white)" />
                             <Tooltip />
@@ -93,7 +88,7 @@ const Dashboard = () => {
 
                     <h4>Média de Gasto por Categoria Mensal</h4>
                     <i className="advice">Iremos mostrar apenas as primeiras sete categorias cadastradas. Para ter um relatório completo, gere um PDF.</i>
-                    <div style={{ width: '100%', height: 300 }}>
+                    <div style={{ width: 1300, height: 300 }}>
                         <ResponsiveContainer width="100%" height="100%">
                             <AreaChart width={500} height={400} data={datay} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                                 <CartesianGrid strokeDasharray="3 3" />

@@ -43,10 +43,11 @@ const Navigation = () => {
         return (
             <ul>
                 <MenuItem slug={slug} path="/dashboard" icon="uil-chart-pie-alt" text="Central de Gráficos" />
-                <MenuItem slug={slug} path="/categorias" icon="uil-tag-alt" text="Cadastrar Categorias" />
+                {/* <MenuItem slug={slug} path="/categorias" icon="uil-tag-alt" text="Cadastrar Categorias" /> */}
                 <MenuItem slug={slug} path="/entrada" icon="uil-plus-circle" text="Adicionar Entrada" />
                 <MenuItem slug={slug} path="/saida" icon="uil-minus-circle" text="Adicionar Saída" />
-                <MenuItem slug={slug} path="/gastos" icon="uil-file-search-alt" text="Lista de Gastos" />
+                <MenuItem slug={slug} path="/gastos" icon="uil-file-search-alt" text="Relatório de Gastos" />
+                <MenuItem slug={slug} path="/ajuda" icon="uil uil-question-circle" text="Central de Dúvidas" />
             </ul>
         );
     }
@@ -72,7 +73,7 @@ const Navigation = () => {
                         <button className="removeBtn" onClick={handleModalRemoved}><i className="uil uil-minus-circle" /></button>
                     </>) : null
                 }
-                <a className="whatsappBtn"><i className="uil uil-whatsapp" /></a>
+                <a href="/ajuda" className="helpBtn"><i className="uil uil-question-circle" /></a>
                 <button className="logoBtn" onClick={handleUserMenu}><i className="uil uil-ellipsis-v" /></button>
             </div>
         </SidebarMenuDetails>

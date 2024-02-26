@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const SidebarMenuDetails = styled.div`
     background: var(--background-alt);
-    color: #fff;
+    color: var(--white);
     width: 20rem;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@ const SidebarMenuDetails = styled.div`
 
     a, li, p {
         text-decoration: none;
-        color: #fff;
+        color: var(--white);
         font-family: 'Poppins', sans-serif;
     }
 
@@ -100,7 +100,7 @@ const SidebarMenuDetails = styled.div`
     }
 
     .sideMenu {
-        .addBtn, .removeBtn, .whatsappBtn, .logoBtn, .costsBtn {
+        .addBtn, .removeBtn, .helpBtn, .logoBtn, .costsBtn {
             position: fixed;
             width: 60px;
             height: 60px;
@@ -118,32 +118,32 @@ const SidebarMenuDetails = styled.div`
             text-align: center;
         }
 
-        .addBtn:hover, .removeBtn:hover, .whatsappBtn:hover, .logoBtn:hover, .costsBtn:hover {
+        .addBtn:hover, .removeBtn:hover, .helpBtn:hover, .logoBtn:hover, .costsBtn:hover {
             filter: brightness(70%)
         }
 
         .costsBtn {
             right: 30px;
-            bottom: 100px;
-            background: var(--blue);
+            bottom: 240px;
+            background: var(--purple);
         }
 
         .addBtn {
             right: 30px;
-            bottom: 240px;
+            bottom: 170px;
             background: var(--green);
         }
 
         .removeBtn {
             right: 30px;
-            bottom: 170px;
+            bottom: 100px;
             background: var(--red);
         }
 
-        .whatsappBtn {
+        .helpBtn {
             right: 100px;
             bottom: 30px;
-            background: var(--green);
+            background: var(--blue);
         }
 
         .logoBtn {

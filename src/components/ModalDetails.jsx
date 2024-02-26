@@ -54,10 +54,6 @@ const ModalDetails = styled.div`
             color: var(--white);
         }
 
-        option {
-            text-align: center;
-        }
-
         input:focus, select:focus, input[type="date"]:focus {
             border: 1px solid rgba(0, 0, 0, 0.2);
         }

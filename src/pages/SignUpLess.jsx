@@ -3,13 +3,6 @@ import ModalDetails from "../components/ModalDetails"
 import Navigation from "../components/Navigation"
 
 const SignUpLess = () => {
-    const getCurrentDate = () => {
-        const today = new Date();
-        const year = today.getFullYear();
-        const month = (today.getMonth() + 1).toString().padStart(2, '0');
-        const day = today.getDate().toString().padStart(2, '0');
-        return `${month}/${day}/${year}`;
-    };
 
     return (
         <>
@@ -24,18 +17,20 @@ const SignUpLess = () => {
 
                     <label htmlFor="">Qual é a categoria?</label>
                     <select name="" id="">
-                        <option value="">Salário</option>
-                        <option value="">Contas à Receber</option>
-                        <option value="">Dinheiro Emprestado</option>
-                        <option value="">Empréstimo Bancário</option>
+                        <option value="">Moradia</option>
+                        <option value="">Alimentação</option>
+                        <option value="">Transporte</option>
+                        <option value="">Saúde</option>
+                        <option value="">Educação</option>
+                        <option value="">Diversos</option>
                     </select>
 
                     <label htmlFor="">Informe a data</label>
-                    <input type="date" id="inicialDate" name="inicialDate" value={getCurrentDate} />
+                    {/* FIXME: National Date */}
+                    <input type="date" />
 
                     <label htmlFor="">Informe o valor</label>
                     <input type="text" name="" id="" />
-
 
                     <div className="buttons">
                         <button className="send">Enviar</button>

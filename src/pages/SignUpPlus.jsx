@@ -21,7 +21,8 @@ const SignUpPlus = () => {
                     </select>
 
                     <label htmlFor="">Informe a data</label>
-                    <input type="date" name="" id="" />
+                    {/* FIXME: National Date */}
+                    <input type="date" />
 
                     <label htmlFor="">Informe o valor</label>
                     <input type="text" name="" id="" />

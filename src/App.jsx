@@ -3,10 +3,11 @@ import Dashboard from './pages/Dashboard'
 import SignUpPlus from './pages/SignUpPlus'
 import SignUpLess from './pages/SignUpLess'
 import SignUpCategories from './pages/SignUpCategories'
+import ReadCosts from './pages/ReadCosts'
+import HelpMe from './pages/HelpMe'
 import Home from './pages/Home'
 import Status from './pages/Status'
 import './index.css'
-import ReadCosts from './pages/ReadCosts'
 
 function App() {
 
@@ -19,6 +20,8 @@ function App() {
             <Route path="/entrada" element={<SignUpPlus />} exact />
             <Route path="/saida" element={<SignUpLess />} exact />
             <Route path="/gastos" element={<ReadCosts />} exact />
+            <Route path="/ajuda" element={<HelpMe />} exact />
+
         </Routes>
     )
 }
