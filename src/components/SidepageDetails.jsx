@@ -91,6 +91,34 @@ const SidepageDetails = styled.div`
 
         p {
             margin: 0;
+            margin-left: -1rem;
+        }
+    }
+
+    .report {
+        margin-top: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        button {
+            font-size: 14px;
+            height: 2.5rem;
+            margin-left: 1rem;
+            padding: 10px 20px;
+            background: var(--purple);
+            color: var(--white);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            transition: 1s;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+
+            &:hover {
+                filter: brightness(80%);
+            }
         }
     }
 `

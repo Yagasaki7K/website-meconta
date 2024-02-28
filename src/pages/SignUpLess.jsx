@@ -46,7 +46,7 @@ const SignUpLess = () => {
             toast.warning('Preencha todos os campos')
             return
         } else {
-            const type = 'Entrada'
+            const type = 'Saída'
             const registerSalary =
             {
                 id: accountId,

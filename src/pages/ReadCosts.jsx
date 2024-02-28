@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation"
 import authService from "../../services/auth.service";
+import postService from "../../services/post.service";
 import SidepageDetails from "../components/SidepageDetails"
 import getUserNameUntilSpace from "../utils/getUserNameUntilSpace";
 
@@ -30,6 +31,17 @@ const ReadCosts = () => {
 
     function SignOut() {
         return authService.signOutGoogle();
+    }
+
+    const [Debts, setDebts] = useState([])
+
+    useEffect(() => {
+        getDebts()
+    }, [])
+
+    const getDebts = async () => {
+        const data = await postService.getAllAccount()
+        setDebts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
 
     useEffect(() => {
@@ -80,6 +92,7 @@ const ReadCosts = () => {
                     </div>
 
                     <hr />
+
                     <h3>Com base nos valores que gastou nesse mês, recomendamos que você&nbsp;
                         {
                             financialStatus ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
@@ -89,13 +102,40 @@ const ReadCosts = () => {
                     <div className="content-debts">
                         <div className="receita">
                             <h4>Receitas de {month} ({ano})</h4>
-                            <p>- 25 de Janeiro | R$ 1.000,00 | Salgadinho do Zeca</p>
+                            {Debts &&
+                                Debts.map((debt, index) => {
+                                    if (debt.type === 'Entrada') {
+                                        return (
+                                            <p key={index}>
+                                                - {debt.date} | R$ {debt.value} | {debt.title} | <span>[DELETAR]</span>
+                                            </p>
+                                        );
+                                    }
+                                    return null;
+                                })
+                            }
                         </div>
+
                         <div className="border" />
                         <div className="despesa">
                             <h4 className="debts">Despesas de {month} ({ano})</h4>
-                            <p>- 25 de Janeiro | R$ 1.000,00 | Salgadinho do Zeca</p>
+                            {Debts &&
+                                Debts.map((debt, index) => {
+                                    if (debt.type === 'Saída') {
+                                        return (
+                                            <p key={index}>
+                                                - {debt.date} | R$ {debt.value} | {debt.title} | <span>[DELETAR]</span>
+                                            </p>
+                                        );
+                                    }
+                                    return null;
+                                })
+                            }
                         </div>
+                    </div>
+
+                    <div className="report">
+                        <button>Emitir Relatório Financeiro</button>
                     </div>
                 </SidepageDetails>
             </div>
