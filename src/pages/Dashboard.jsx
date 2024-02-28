@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 
+import { useEffect, useState } from 'react';
+import authService from '../../services/auth.service';
 import DashboardDetails from '../components/DashboardDetails'
 import Navigation from '../components/Navigation'
 import { BarChart, YAxis, XAxis, Tooltip, CartesianGrid, Bar, ResponsiveContainer, PieChart, Pie, AreaChart, Area } from 'recharts';
@@ -64,46 +66,79 @@ const Dashboard = () => {
     const saudacao = hora >= 6 && hora < 12 ? 'Bom dia!' : hora >= 12 && hora < 18 ? 'Boa tarde!' : hora >= 18 && hora <= 23 ? 'Boa noite!' : 'Boa noite!';
 
     const dataFormatada = `${dia} de ${mes} de ${ano}, agora são ${hora} horas e ${minutos} minutos`;
-    return (
-        <div>
-            <Navigation />
-            <DashboardDetails>
-                <div className="content">
-                    <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
-                    <p>{saudacao}  Hoje é {dataFormatada}.</p>
+    const [render, setRender] = useState(false)
+    const [accountName, setAccountName] = useState('')
 
-                    <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
-                    <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
-                    <div className="first-graph">
-                        <BarChart width={1300} height={300} data={data}>
-                            <XAxis dataKey="name" stroke="var(--white)" />
-                            <YAxis stroke="var(--white)" />
-                            <Tooltip />
-                            <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
-                            <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
-                            <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
-                        </BarChart>
-                    </div>
+    async function checkAuth() {
+        return await authService.stateAuthentication();
+    }
 
-                    <h4>Média de Gasto por Categoria Mensal</h4>
-                    <i className="advice">Iremos mostrar apenas as primeiras sete categorias cadastradas. Para ter um relatório completo, gere um PDF.</i>
-                    <div style={{ width: 1300, height: 300 }}>
-                        <ResponsiveContainer width="100%" height="100%">
-                            <AreaChart width={500} height={400} data={datay} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                                <CartesianGrid strokeDasharray="3 3" />
+    function SignOut() {
+        return authService.signOutGoogle();
+    }
+
+    useEffect(() => {
+        checkAuth()
+            .then(() => {
+                authService.stateAuthentication()
+                    .then((result) => {
+                        if (result) {
+                            setRender(true)
+                            setAccountName(result.name)
+                        } else {
+                            SignOut();
+                            window.location.href = "/"
+                        }
+                    });
+            })
+            .catch(() => {
+                window.location.href = "/"
+            });
+    }, []);
+
+    if (render) {
+        return (
+            <div>
+                <Navigation name={accountName} />
+                <DashboardDetails>
+                    <div className="content">
+                        <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
+
+                        <p>{saudacao}  Hoje é {dataFormatada}.</p>
+
+                        <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
+                        <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
+                        <div className="first-graph">
+                            <BarChart width={1300} height={300} data={data}>
                                 <XAxis dataKey="name" stroke="var(--white)" />
                                 <YAxis stroke="var(--white)" />
                                 <Tooltip />
-                                <Area type="monotone" dataKey="Despesas" stackId="1" stroke="var(--red)" fill="var(--red)" />
-                                <Area type="monotone" dataKey="Receitas" stackId="1" stroke="var(--green)" fill="var(--green)" />
-                            </AreaChart>
-                        </ResponsiveContainer>
+                                <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
+                                <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
+                                <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
+                            </BarChart>
+                        </div>
+
+                        <h4>Média de Gasto por Categoria Mensal</h4>
+                        <i className="advice">Iremos mostrar apenas as primeiras sete categorias cadastradas. Para ter um relatório completo, gere um PDF.</i>
+                        <div style={{ width: 1300, height: 300 }}>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <AreaChart width={500} height={400} data={datay} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                                    <CartesianGrid strokeDasharray="3 3" />
+                                    <XAxis dataKey="name" stroke="var(--white)" />
+                                    <YAxis stroke="var(--white)" />
+                                    <Tooltip />
+                                    <Area type="monotone" dataKey="Despesas" stackId="1" stroke="var(--red)" fill="var(--red)" />
+                                    <Area type="monotone" dataKey="Receitas" stackId="1" stroke="var(--green)" fill="var(--green)" />
+                                </AreaChart>
+                            </ResponsiveContainer>
+                        </div>
                     </div>
-                </div>
-            </DashboardDetails>
-        </div>
-    )
+                </DashboardDetails>
+            </div>
+        )
+    }
 }
 
 export default Dashboard

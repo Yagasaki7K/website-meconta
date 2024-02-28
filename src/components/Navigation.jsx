@@ -1,8 +1,38 @@
+import authService from '../../services/auth.service'
+import getUserNameUntilSpace from '../utils/getUserNameUntilSpace'
 import SidebarMenuDetails from './SidebarMenuDetails'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const Navigation = () => {
     const [hiddenUserMenu, setHiddenUserMenu] = useState(false)
+    const [accountName, setAccountName] = useState('')
+
+    async function checkAuth() {
+        return await authService.stateAuthentication();
+    }
+
+    function SignOut() {
+        return authService.signOutGoogle();
+    }
+
+    useEffect(() => {
+        checkAuth()
+            .then(() => {
+                authService.stateAuthentication()
+                    .then((result) => {
+                        if (result) {
+                            console.log(result)
+                            setAccountName(result.name)
+                        } else {
+                            SignOut();
+                            window.location.href = "/"
+                        }
+                    });
+            })
+            .catch(() => {
+                window.location.href = "/"
+            });
+    }, []);
 
     function handleUserMenu() {
         if (hiddenUserMenu === true) {
@@ -56,7 +86,7 @@ const Navigation = () => {
         <SidebarMenuDetails>
             <ul>
                 <a href='/dashboard'><img src="/logo.png" alt="Logotipo" /></a>
-                <a href="/dashboard"><li className='user'><i className="uil uil-user" /> Olá, Anderson</li></a>
+                <a href="/dashboard"><li className='user'><i className="uil uil-user" /> Olá, {getUserNameUntilSpace(accountName)}!</li></a>
 
                 <Menu slug={slug} />
                 <li><i className="uil uil-signout" /> Logout</li>

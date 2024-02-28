@@ -4,9 +4,10 @@ const SidepageDetails = styled.div`
     margin-left: 20rem;
     padding: 1rem 2rem;
     width: 50%;
-    @media (max-width: 768px) {
+
+    @media (max-width: 1024px) {
         margin-left: 0;
-        width: 100%;
+        width: 85%;
     }
 
     h4 {
