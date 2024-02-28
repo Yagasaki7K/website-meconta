@@ -89,26 +89,35 @@ const SidepageDetails = styled.div`
             border-radius: 5px;
         }
 
+        .receita, .despesa {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
         p {
             margin: 0;
-            margin-left: -1rem;
         }
     }
 
     .report {
         margin-top: 1rem;
+        margin-left: -1rem;
         display: flex;
-        justify-content: center;
-        align-items: center;
 
         button {
             font-size: 14px;
             height: 2.5rem;
             margin-left: 1rem;
             padding: 10px 20px;
-            background: var(--purple);
+            /* FIXME: Delete comments if report button is working */
+            /* background: var(--purple); */
+            background: var(--gray);
             color: var(--white);
-            cursor: pointer;
+            /* cursor: pointer; */
+            cursor: not-allowed;
             transition: background-color 0.3s ease;
             font-weight: bold;
             transition: 1s;
@@ -116,9 +125,9 @@ const SidepageDetails = styled.div`
             border-radius: 5px;
             outline: none;
 
-            &:hover {
+            /* &:hover {
                 filter: brightness(80%);
-            }
+            } */
         }
     }
 `

@@ -8,6 +8,7 @@ import getUserNameUntilSpace from "../utils/getUserNameUntilSpace";
 const ReadCosts = () => {
     const [render, setRender] = useState(false)
     const [accountName, setAccountName] = useState()
+    const [accountId, setAccountId] = useState()
 
     // eslint-disable-next-line no-unused-vars
     const [financialStatus, setFinancialStatus] = useState(false)
@@ -52,6 +53,7 @@ const ReadCosts = () => {
                         if (result) {
                             setRender(true)
                             setAccountName(result.name)
+                            setAccountId(result.id)
                         } else {
                             SignOut();
                             window.location.href = "/"
@@ -71,8 +73,13 @@ const ReadCosts = () => {
                 <SidepageDetails>
                     <h1>Olá, {getUserNameUntilSpace(accountName)}!</h1>
                     <p>Hoje é {dataFormatada}</p>
+                    <div className="report">
+                        <button>Emitir Relatório Financeiro Anual</button>
+                        <button>Emitir Relatório Financeiro Mensal</button>
+                    </div>
+
                     <hr />
-                    <label htmlFor="">Informe o mês que deseja filtrar: </label>
+                    <label htmlFor="">Informe o mês que deseja filtrar em {ano}: </label>
                     <div className="select">
                         <select onChange={event => setMonth(event.target.value)}>
                             <option value="Janeiro">Janeiro</option>
@@ -104,7 +111,7 @@ const ReadCosts = () => {
                             <h4>Receitas de {month} ({ano})</h4>
                             {Debts &&
                                 Debts.map((debt, index) => {
-                                    if (debt.type === 'Entrada') {
+                                    if (debt.type === 'Entrada' && accountId === debt.id) {
                                         return (
                                             <p key={index}>
                                                 - {debt.date} | R$ {debt.value} | {debt.title} | <span>[DELETAR]</span>
@@ -121,7 +128,7 @@ const ReadCosts = () => {
                             <h4 className="debts">Despesas de {month} ({ano})</h4>
                             {Debts &&
                                 Debts.map((debt, index) => {
-                                    if (debt.type === 'Saída') {
+                                    if (debt.type === 'Saída' && accountId === debt.id) {
                                         return (
                                             <p key={index}>
                                                 - {debt.date} | R$ {debt.value} | {debt.title} | <span>[DELETAR]</span>
@@ -132,10 +139,6 @@ const ReadCosts = () => {
                                 })
                             }
                         </div>
-                    </div>
-
-                    <div className="report">
-                        <button>Emitir Relatório Financeiro</button>
                     </div>
                 </SidepageDetails>
             </div>
