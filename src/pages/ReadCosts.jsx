@@ -9,6 +9,7 @@ const ReadCosts = () => {
     const [render, setRender] = useState(false)
     const [accountName, setAccountName] = useState()
     const [accountId, setAccountId] = useState()
+    const [Debts, setDebts] = useState([])
 
     // eslint-disable-next-line no-unused-vars
     const [financialStatus, setFinancialStatus] = useState(false)
@@ -34,15 +35,29 @@ const ReadCosts = () => {
         return authService.signOutGoogle();
     }
 
-    const [Debts, setDebts] = useState([])
-
     useEffect(() => {
         getDebts()
+        getValuesAndReturnToFinancialStatus()
     }, [])
 
     const getDebts = async () => {
         const data = await postService.getAllAccount()
         setDebts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    }
+
+    //FIXME: Need to solve this!
+    const getValuesAndReturnToFinancialStatus = () => {
+        for (let i = 0; i < Debts.length; i++) {
+            if (Debts[i].id === accountId && Debts[i].type === 'Saída') {
+                setFinancialStatus([...Debts[i].financialStatus])
+            }
+
+            if (Debts[i].id === accountId && Debts[i].type === 'Receita') {
+                setFinancialStatus([...Debts[i].financialStatus])
+            }
+
+            return financialStatus;
+        }
     }
 
     useEffect(() => {
@@ -102,7 +117,7 @@ const ReadCosts = () => {
 
                     <h3>Com base nos valores que gastou nesse mês, recomendamos que você&nbsp;
                         {
-                            financialStatus ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
+                            financialStatus > 0 ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
                         }
                     </h3>
 
