@@ -6,7 +6,6 @@ import {
 } from "firebase/auth";
 import { query, where, collection, getDocs } from "firebase/firestore";
 import { auth, database } from "../client";
-import { toast } from "sonner";
 
 const permissionsCollectionRef = collection(database, "permissions");
 
@@ -47,7 +46,6 @@ class authService {
                     };
                     resolve(infos);
                 } else {
-                    toast.error("Faça o login para continuar!");
                     reject("Este usuário não está autenticado!");
                 }
                 unsubscribe();

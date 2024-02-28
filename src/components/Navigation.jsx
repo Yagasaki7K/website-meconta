@@ -89,7 +89,7 @@ const Navigation = () => {
                 <a href="/dashboard"><li className='user'><i className="uil uil-user" /> Olá, {getUserNameUntilSpace(accountName)}!</li></a>
 
                 <Menu slug={slug} />
-                <li><i className="uil uil-signout" /> Logout</li>
+                <li onClick={() => SignOut}><i className="uil uil-signout" /> Logout</li>
             </ul>
             <div className="footer">
                 <p>v20240226 - Kindred Software</p>
