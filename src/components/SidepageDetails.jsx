@@ -27,6 +27,10 @@ const SidepageDetails = styled.div`
         }
     }
 
+    a {
+        color: var(--purple);
+    }
+
     .debts {
         color: var(--red);
     }
