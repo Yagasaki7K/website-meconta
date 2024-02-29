@@ -7,12 +7,12 @@ import postService from "../../services/post.service";
 import { toast } from "sonner";
 
 const SignUpLess = () => {
-    const [render, setRender] = useState(false)
-    const [label, setLabel] = useState('')
-    const [date, setDate] = useState('')
-    const [category, setCategory] = useState('')
-    const [value, setValue] = useState('')
-    const [accountId, setAccountId] = useState('')
+    const [Render, setRender] = useState(false)
+    const [Label, setLabel] = useState('')
+    const [Date, setDate] = useState('')
+    const [Category, setCategory] = useState('')
+    const [Value, setValue] = useState('')
+    const [AccountId, setAccountId] = useState('')
 
     async function checkAuth() {
         return await authService.stateAuthentication();
@@ -42,19 +42,19 @@ const SignUpLess = () => {
     }, []);
 
     const AddReceiptToAccount = async () => {
-        if (!label || !date || !category || !value) {
+        if (!Label || !Date || !Category || !Value) {
             toast.warning('Preencha todos os campos')
             return
         } else {
             const type = 'Saída'
             const registerSalary =
             {
-                code: accountId,
-                title: label,
+                code: AccountId,
+                title: Label,
                 type,
-                date,
-                category,
-                value,
+                date: Date,
+                category: Category,
+                value: Value,
             }
 
             await postService.addAccount(registerSalary);
@@ -70,7 +70,22 @@ const SignUpLess = () => {
         setValue('')
     }
 
-    if (render) {
+    const handleInputMoney = (event) => {
+        let inputValue = event.target.value;
+
+        // Remove todos os caracteres não numéricos
+        inputValue = inputValue.replace(/[^\d]/g, '');
+
+        // Formata o valor com duas casas decimais e o separador de milhar
+        const formattedValue = Number(inputValue / 100).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        });
+
+        setValue(formattedValue);
+    };
+
+    if (Render) {
         return (
             <>
                 <Navigation />
@@ -80,10 +95,10 @@ const SignUpLess = () => {
                         <i>Saída são valores que saíram de sua conta</i>
 
                         <label htmlFor="label">Qual é o nome da despesa?</label>
-                        <input type="text" name="label" placeholder="Salgado do Beto" onChange={event => setLabel(event.target.value)} />
+                        <input type="text" name="label" value={Label} placeholder="Salgado do Beto" onChange={event => setLabel(event.target.value)} />
 
                         <label htmlFor="category">Qual é a categoria?</label>
-                        <select name="category" onChange={event => setCategory(event.target.value)}>
+                        <select name="category" value={Category} onChange={event => setCategory(event.target.value)}>
                             <option value="">Selecione</option>
                             <option value="Moradia">Moradia</option>
                             <option value="Alimentação">Alimentação</option>
@@ -95,10 +110,10 @@ const SignUpLess = () => {
 
                         <label htmlFor="date">Informe a data</label>
                         {/* FIXME: National Date */}
-                        <input type="date" name="value" onChange={event => setDate(event.target.value)} />
+                        <input type="date" name="value" value={Date} onChange={event => setDate(event.target.value)} />
 
                         <label htmlFor="value">Informe o valor</label>
-                        <input type="text" name="value" onChange={event => setValue(event.target.value)} />
+                        <input type="text" value={Value} onChange={handleInputMoney} placeholder="R$ 1.000,00" />
 
                         <div className="buttons">
                             <button className="send" onClick={AddReceiptToAccount}>Enviar</button>

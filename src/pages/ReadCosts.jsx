@@ -11,165 +11,166 @@ const ReadCosts = () => {
     const [render, setRender] = useState(false)
     const [accountName, setAccountName] = useState('')
     const [accountId, setAccountId] = useState('')
-    const [Debts, setDebts] = useState([])
-
-    // eslint-disable-next-line no-unused-vars
+    const [debts, setDebts] = useState([])
+    const [originalDebts, setOriginalDebts] = useState([]);
     const [financialStatus, setFinancialStatus] = useState(false)
+    const [selectedMonth, setSelectedMonth] = useState(null);
 
-    const date = new Date(); // A data é criada com o formato: ano, mês (0-11), dia
+    const date = new Date();
     const dia = date.getDate();
     const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-
     const mes = meses[date.getMonth()];
-    const [month, setMonth] = useState(mes.toString())
-
     const ano = date.getFullYear();
     const hora = String(date.getHours()).padStart(2, '0');
     const minutos = String(date.getMinutes()).padStart(2, '0');
-
     const dataFormatada = `${dia} de ${mes} de ${ano}, agora são ${hora} horas e ${minutos} minutos`;
 
-    async function checkAuth() {
+    const checkAuth = async () => {
         return await authService.stateAuthentication();
     }
 
-    function SignOut() {
-        return authService.signOutGoogle();
+    const signOut = () => {
+        authService.signOutGoogle();
+        window.location.href = "/";
     }
 
-    useEffect(() => {
-        getDebts()
-        getValuesAndReturnToFinancialStatus()
-    }, [])
-
-    const getDebts = async () => {
-        const data = await postService.getAllAccount()
-        setDebts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
+    const fetchDebts = async () => {
+        const data = await postService.getAllAccount();
+        const originalDebts = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        setOriginalDebts(originalDebts);
+        setDebts(originalDebts);
+    };
 
     const getValuesAndReturnToFinancialStatus = () => {
-        for (let i = 0; i < Debts.length; i++) {
-            if (Debts[i].id === accountId && Debts[i].type === 'Saída') {
-                setFinancialStatus([...Debts[i].financialStatus])
-            }
+        const debt = debts.find((d) => d.id === accountId && (d.type === 'Saída' || d.type === 'Receita'));
 
-            if (Debts[i].id === accountId && Debts[i].type === 'Receita') {
-                setFinancialStatus([...Debts[i].financialStatus])
-            }
-
-            return financialStatus;
+        if (debt) {
+            setFinancialStatus([...debt.financialStatus]);
         }
     }
 
-    const deleteThisDebt = (id) => {
-        postService.deleteAccount(id)
+    const deleteDebt = async (id) => {
+        await postService.deleteAccount(id);
         toast.success('Anotação excluída com sucesso!');
-        window.location.reload()
+        fetchDebts();
     }
 
     useEffect(() => {
-        checkAuth()
-            .then(() => {
-                authService.stateAuthentication()
-                    .then((result) => {
-                        if (result) {
-                            setRender(true)
-                            setAccountName(result.name)
-                            setAccountId(result.id)
-                        } else {
-                            SignOut();
-                            window.location.href = "/"
-                        }
-                    });
-            })
-            .catch(() => {
-                window.location.href = "/"
-            });
+        const fetchData = async () => {
+            await checkAuth();
+            const result = await authService.stateAuthentication();
+            if (result) {
+                setRender(true)
+                setAccountName(result.name)
+                setAccountId(result.id)
+            } else {
+                signOut();
+            }
+        }
+        fetchData();
     }, []);
 
-    if (render) {
-        return (
-            <div>
-                <Navigation />
+    useEffect(() => {
+        fetchDebts();
+        getValuesAndReturnToFinancialStatus();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-                <SidepageDetails>
-                    <h1>Olá, {getUserNameUntilSpace(accountName)}!</h1>
-                    <p>Hoje é {dataFormatada}</p>
-                    <div className="report">
-                        <button>Emitir Relatório Financeiro Mensal</button>
-                        <button>Emitir Relatório Financeiro Anual</button>
-                    </div>
+    useEffect(() => {
+        filterDebtsByMonth();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedMonth]);
 
-                    <hr />
-                    <label htmlFor="">Informe o mês que deseja filtrar em {ano}: </label>
-                    <div className="select">
-                        <select onChange={event => setMonth(event.target.value)}>
-                            <option value="Janeiro">Janeiro</option>
-                            <option value="Fevereiro">Fevereiro</option>
-                            <option value="Março">Março</option>
-                            <option value="Abril">Abril</option>
-                            <option value="Maio">Maio</option>
-                            <option value="Junho">Junho</option>
-                            <option value="Julho">Julho</option>
-                            <option value="Agosto">Agosto</option>
-                            <option value="Setembro">Setembro</option>
-                            <option value="Outubro">Outubro</option>
-                            <option value="Novembro">Novembro</option>
-                            <option value="Dezembro">Dezembro</option>
-                        </select>
-                        <button>Filtrar</button>
-                    </div>
+    const getFilteredMonth = (event) => {
+        setSelectedMonth(parseInt(event.target.value, 10));
+    };
 
-                    <hr />
+    const filterDebtsByMonth = () => {
+        if (!selectedMonth) {
+            setDebts(originalDebts);
+            return;
+        }
 
-                    <h3>Com base nos valores que gastou nesse mês, recomendamos que você&nbsp;
-                        {
-                            financialStatus > 0 ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
-                        }
-                    </h3>
+        const filteredDebts = originalDebts.filter((debt) => {
+            const formattedDate = getDateAndFormatHim(debt.date);
+            if (formattedDate) {
+                const debtDateParts = formattedDate.split('/');
+                const month = parseInt(debtDateParts[1], 10);
+                return month === selectedMonth;
+            } else {
+                console.log('Formato de data inválido:', debt.date);
+                return false;
+            }
+        });
+        setDebts(filteredDebts);
+    };
 
-                    <div className="content-debts">
-                        <div className="receita">
-                            <h4>Receitas de {month} ({ano})</h4>
-                            <div className="values">
-                                {Debts &&
-                                    Debts.map((debt, index) => {
-                                        if (debt.type === 'Entrada' && accountId === debt.code) {
-                                            return (
-                                                <p key={index}>
-                                                    [<span onClick={() => deleteThisDebt(debt.id)}>DELETAR</span>] | {getDateAndFormatHim(debt.date)} | {debt.value} | {debt.title}
-                                                </p>
-                                            );
-                                        }
-                                        return null;
-                                    })
+    return render && (
+        <div>
+            <Navigation />
+            <SidepageDetails>
+                <h1>Olá, {getUserNameUntilSpace(accountName)}!</h1>
+                <p>Hoje é {dataFormatada}</p>
+                <div className="report">
+                    <button>Emitir Relatório Financeiro Mensal</button>
+                    <button>Emitir Relatório Financeiro Anual</button>
+                </div>
+
+                <hr />
+
+                <label htmlFor="">Informe o mês que deseja filtrar de {ano}: </label>
+                <div className="select">
+                    <select onChange={getFilteredMonth}>
+                        <option value="">Selecione o mês</option>
+                        {meses.map((month, index) => (
+                            <option key={index} value={index + 1}>{month}</option>
+                        ))}
+                    </select>
+                </div>
+                <hr />
+                <h3>Com base nos valores que gastou nesse mês, recomendamos que você&nbsp;
+                    {
+                        financialStatus > 0 ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
+                    }
+                </h3>
+                <div className="content-debts">
+                    <div className="receita">
+                        <h4>Receitas de {meses[selectedMonth - 1] || mes} ({ano})</h4>
+                        <div className="values">
+                            {debts && debts.map((debt, index) => {
+                                if (debt.type === 'Entrada' && accountId === debt.code) {
+                                    return (
+                                        <p key={index}>
+                                            [<span onClick={() => deleteDebt(debt.id)}>DELETAR</span>] | {getDateAndFormatHim(debt.date)} | {debt.value} | {debt.title}
+                                        </p>
+                                    );
                                 }
-                            </div>
-                        </div>
-
-                        <div className="border" />
-                        <div className="despesa">
-                            <h4 className="debts">Despesas de {month} ({ano})</h4>
-                            <div className="values">
-                                {Debts &&
-                                    Debts.map((debt, index) => {
-                                        if (debt.type === 'Saída' && accountId === debt.code) {
-                                            return (
-                                                <p key={index}>
-                                                    [<span onClick={() => deleteThisDebt(debt.id)}>DELETAR</span>] | {getDateAndFormatHim(debt.date)} | {debt.value} | {debt.title}
-                                                </p>
-                                            );
-                                        }
-                                        return null;
-                                    })
-                                }
-                            </div>
+                                return null;
+                            })
+                            }
                         </div>
                     </div>
-                </SidepageDetails>
-            </div>
-        )
-    }
+                    <div className="border" />
+                    <div className="despesa">
+                        <h4 className="debts">Despesas de {meses[selectedMonth - 1] || mes} ({ano})</h4>
+                        <div className="values">
+                            {debts && debts.map((debt, index) => {
+                                if (debt.type === 'Saída' && accountId === debt.code) {
+                                    return (
+                                        <p key={index}>
+                                            [<span onClick={() => deleteDebt(debt.id)}>DELETAR</span>] | {getDateAndFormatHim(debt.date)} | {debt.value} | {debt.title}
+                                        </p>
+                                    );
+                                }
+                                return null;
+                            })
+                            }
+                        </div>
+                    </div>
+                </div>
+            </SidepageDetails>
+        </div>
+    )
 }
 
-export default ReadCosts
+export default ReadCosts;

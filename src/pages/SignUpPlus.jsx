@@ -57,8 +57,8 @@ const SignUpPlus = () => {
             }
 
             await postService.addAccount(registerSalary);
-            EraseReceiptToAccount()
             toast.success('Registro efetuado com sucesso!');
+            EraseReceiptToAccount()
         }
     }
 
