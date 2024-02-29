@@ -64,7 +64,7 @@ const SidebarMenuDetails = styled.div`
                 background: var(--background);
                 cursor: pointer;
                 color: var(--green);
-                transition: 0.8s;
+                transition: 0.5s;
             }
 
             i {
