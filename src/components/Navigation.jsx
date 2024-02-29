@@ -92,7 +92,7 @@ const Navigation = () => {
                 <li onClick={() => SignOut}><i className="uil uil-signout" /> Logout</li>
             </ul>
             <div className="footer">
-                <p>v20240226 - Kindred Software</p>
+                <p>v20240229 - Kindred Software</p>
             </div>
 
             <div className="sideMenu">
