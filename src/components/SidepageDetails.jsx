@@ -95,6 +95,15 @@ const SidepageDetails = styled.div`
             align-items: center;
             text-align: center;
             flex-direction: column;
+
+            .values {
+                text-align: left;
+
+                span {
+                    color: var(--red);
+                    cursor: pointer;
+                }
+            }
         }
 
         p {

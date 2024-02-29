@@ -4,11 +4,13 @@ import authService from "../../services/auth.service";
 import postService from "../../services/post.service";
 import SidepageDetails from "../components/SidepageDetails"
 import getUserNameUntilSpace from "../utils/getUserNameUntilSpace";
+import getDateAndFormatHim from "../utils/getDateAndFormatHim";
+import { toast } from "sonner";
 
 const ReadCosts = () => {
     const [render, setRender] = useState(false)
-    const [accountName, setAccountName] = useState()
-    const [accountId, setAccountId] = useState()
+    const [accountName, setAccountName] = useState('')
+    const [accountId, setAccountId] = useState('')
     const [Debts, setDebts] = useState([])
 
     // eslint-disable-next-line no-unused-vars
@@ -45,7 +47,6 @@ const ReadCosts = () => {
         setDebts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     }
 
-    //FIXME: Need to solve this!
     const getValuesAndReturnToFinancialStatus = () => {
         for (let i = 0; i < Debts.length; i++) {
             if (Debts[i].id === accountId && Debts[i].type === 'Saída') {
@@ -58,6 +59,12 @@ const ReadCosts = () => {
 
             return financialStatus;
         }
+    }
+
+    const deleteThisDebt = (id) => {
+        postService.deleteAccount(id)
+        toast.success('Anotação excluída com sucesso!');
+        window.location.reload()
     }
 
     useEffect(() => {
@@ -89,8 +96,8 @@ const ReadCosts = () => {
                     <h1>Olá, {getUserNameUntilSpace(accountName)}!</h1>
                     <p>Hoje é {dataFormatada}</p>
                     <div className="report">
-                        <button>Emitir Relatório Financeiro Anual</button>
                         <button>Emitir Relatório Financeiro Mensal</button>
+                        <button>Emitir Relatório Financeiro Anual</button>
                     </div>
 
                     <hr />
@@ -124,35 +131,39 @@ const ReadCosts = () => {
                     <div className="content-debts">
                         <div className="receita">
                             <h4>Receitas de {month} ({ano})</h4>
-                            {Debts &&
-                                Debts.map((debt, index) => {
-                                    if (debt.type === 'Entrada' && accountId === debt.id) {
-                                        return (
-                                            <p key={index}>
-                                                - {debt.date} | R$ {debt.value} | {debt.title} | <span>[DELETAR]</span>
-                                            </p>
-                                        );
-                                    }
-                                    return null;
-                                })
-                            }
+                            <div className="values">
+                                {Debts &&
+                                    Debts.map((debt, index) => {
+                                        if (debt.type === 'Entrada' && accountId === debt.code) {
+                                            return (
+                                                <p key={index}>
+                                                    [<span onClick={() => deleteThisDebt(debt.id)}>DELETAR</span>] | {getDateAndFormatHim(debt.date)} | {debt.value} | {debt.title}
+                                                </p>
+                                            );
+                                        }
+                                        return null;
+                                    })
+                                }
+                            </div>
                         </div>
 
                         <div className="border" />
                         <div className="despesa">
                             <h4 className="debts">Despesas de {month} ({ano})</h4>
-                            {Debts &&
-                                Debts.map((debt, index) => {
-                                    if (debt.type === 'Saída' && accountId === debt.id) {
-                                        return (
-                                            <p key={index}>
-                                                - {debt.date} | R$ {debt.value} | {debt.title} | <span>[DELETAR]</span>
-                                            </p>
-                                        );
-                                    }
-                                    return null;
-                                })
-                            }
+                            <div className="values">
+                                {Debts &&
+                                    Debts.map((debt, index) => {
+                                        if (debt.type === 'Saída' && accountId === debt.code) {
+                                            return (
+                                                <p key={index}>
+                                                    [<span onClick={() => deleteThisDebt(debt.id)}>DELETAR</span>] | {getDateAndFormatHim(debt.date)} | {debt.value} | {debt.title}
+                                                </p>
+                                            );
+                                        }
+                                        return null;
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
                 </SidepageDetails>

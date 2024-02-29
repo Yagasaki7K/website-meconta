@@ -21,7 +21,6 @@ function App() {
             <Route path="/saida" element={<SignUpLess />} exact />
             <Route path="/gastos" element={<ReadCosts />} exact />
             <Route path="/ajuda" element={<HelpMe />} exact />
-
         </Routes>
     )
 }

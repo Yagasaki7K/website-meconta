@@ -49,7 +49,7 @@ const SignUpLess = () => {
             const type = 'Saída'
             const registerSalary =
             {
-                id: accountId,
+                code: accountId,
                 title: label,
                 type,
                 date,

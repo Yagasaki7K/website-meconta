@@ -48,7 +48,7 @@ const SignUpPlus = () => {
             const type = 'Entrada'
             const registerSalary =
             {
-                id: accountId,
+                code: accountId,
                 title: label,
                 type,
                 date,
@@ -57,8 +57,8 @@ const SignUpPlus = () => {
             }
 
             await postService.addAccount(registerSalary);
-            toast.success('Registro efetuado com sucesso!');
             EraseReceiptToAccount()
+            toast.success('Registro efetuado com sucesso!');
         }
     }
 
@@ -68,6 +68,21 @@ const SignUpPlus = () => {
         setCategory('')
         setValue('')
     }
+
+    const handleInputMoney = (event) => {
+        let inputValue = event.target.value;
+
+        // Remove todos os caracteres não numéricos
+        inputValue = inputValue.replace(/[^\d]/g, '');
+
+        // Formata o valor com duas casas decimais e o separador de milhar
+        const formattedValue = Number(inputValue / 100).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL',
+        });
+
+        setValue(formattedValue);
+    };
 
     if (render) {
         return (
@@ -79,10 +94,10 @@ const SignUpPlus = () => {
                         <i>Entrada são valores que entraram na conta</i>
 
                         <label htmlFor="label">Qual é o nome da entrada?</label>
-                        <input type="text" name="label" placeholder="13º Salário" onChange={event => setLabel(event.target.value)} />
+                        <input type="text" name="label" placeholder="13º Salário" value={label} onChange={event => setLabel(event.target.value)} />
 
                         <label htmlFor="category">Qual é a categoria?</label>
-                        <select name="category" onChange={event => setCategory(event.target.value)}>
+                        <select name="category" onChange={event => setCategory(event.target.value)} value={category}>
                             <option value="">Selecione</option>
                             <option value="Salário">Salário</option>
                             <option value="Contas à Receber">Contas à Receber</option>
@@ -90,10 +105,10 @@ const SignUpPlus = () => {
                         </select>
 
                         <label htmlFor="date">Informe a data</label>
-                        <input type="date" name="date" onChange={event => setDate(event.target.value)} />
+                        <input type="date" name="date" value={date} onChange={event => setDate(event.target.value)} />
 
                         <label htmlFor="value">Informe o valor</label>
-                        <input type="text" name="value" onChange={event => setValue(event.target.value)} />
+                        <input type="text" name="value" value={value} onChange={handleInputMoney} placeholder="R$ 1.000,00" />
 
                         <div className="buttons">
                             <button className="send" onClick={AddReceiptToAccount}>Enviar</button>
