@@ -21,7 +21,6 @@ const Navigation = () => {
                 authService.stateAuthentication()
                     .then((result) => {
                         if (result) {
-                            console.log(result)
                             setAccountName(result.name)
                         } else {
                             SignOut();
