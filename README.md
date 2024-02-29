@@ -6,18 +6,13 @@
    <a href="https://www.linkedin.com/in/andersonmarlon/">
       <img alt="AndersonMarlon" src="https://img.shields.io/badge/-AndersonMarlon-5965e0?style=flat&logo=Linkedin&logoColor=white" />
    </a>
-  <a href="https://github.com/Yagasaki7K/website-meconta/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Yagasaki7K/website-meconta?color=5965e0">
-  </a>
   <img alt="License" src="https://img.shields.io/badge/license-MIT-5965e0">
-  <img alt="GitHub Pull Requests" src="https://img.shields.io/github/issues-pr/Yagasaki7K/website-meconta?color=5965e0" />
-   <a href="https://twitter.com/yagasaki7k">
     <img src="https://img.shields.io/twitter/follow/medusajs.svg?label=Contact%20me%20at%20@Yagasaki7K" alt="Contact me at @Yagasaki7K" />
   </a>
 </p>
 
 <div align="center">
-  <sub>meconta. Built with 💜 by
+  <sub>MeConta. Built with 💚 by
     <a href="https://github.com/Yagasaki7K">Anderson "Yagasaki" Marlon</a> and
     <a href="https://github.com/Yagasaki7K/website-essentials/graphs/contributors">
       contributors
@@ -38,7 +33,7 @@
 
 # 👀 Demo Website
 
-👉  Demo: https://meconta.vercel.app/
+👉  Demo: https://me-conta.vercel.app/
 
 # 💻 Technologies
 
@@ -48,6 +43,7 @@ This project was made using the follow technologies:
 * Styled Components
 * Sonner
 * Recharts
+* Firebase Auth/Firestore
 
 # 🚀 Features
 
