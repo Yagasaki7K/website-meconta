@@ -7,14 +7,14 @@ import postService from '../../services/post.service'
 
 const Dashboard = () => {
     const date = new Date();
-    const dia = date.getDate();
+    const day = date.getDate();
     const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-    const mes = meses[date.getMonth()];
-    const ano = date.getFullYear();
-    const hora = String(date.getHours()).padStart(2, '0');
-    const minutos = String(date.getMinutes()).padStart(2, '0');
-    const saudacao = hora >= 6 && hora < 12 ? 'Bom dia!' : hora >= 12 && hora < 18 ? 'Boa tarde!' : hora >= 18 && hora <= 23 ? 'Boa noite!' : 'Boa noite!';
-    const dataFormatada = `${dia} de ${mes} de ${ano}, agora são ${hora} horas e ${minutos} minutos`;
+    const month = meses[date.getMonth()];
+    const year = date.getFullYear();
+    const hour = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const welcome = hour >= 6 && hour < 12 ? 'Bom dia!' : hour >= 12 && hour < 18 ? 'Boa tarde!' : hour >= 18 && hour <= 23 ? 'Boa noite!' : 'Boa noite!';
+    const dataFormatada = `${day} de ${month} de ${year}, agora são ${hour} horas e ${minutes} minutos`;
 
     const [render, setRender] = useState(false)
     const [accountName, setAccountName] = useState('')
@@ -39,8 +39,8 @@ const Dashboard = () => {
         const data = [];
 
         for (let month = 1; month <= 12; month++) {
-            let totalReceitas = 0;
-            let totalDespesas = 0;
+            let totalExpense = 0;
+            let totalRevenue = 0;
 
             debts.forEach(debt => {
                 const debtDate = new Date(debt.date);
@@ -50,18 +50,18 @@ const Dashboard = () => {
                 if (debtMonth === month && debtYear === 2024 && debt.code === accountId) {
                     if (debt.type === 'Entrada') {
                         const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
-                        totalReceitas += parseFloat(valueString);
+                        totalExpense += parseFloat(valueString);
                     } else if (debt.type === 'Saída') {
                         const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
-                        totalDespesas += parseFloat(valueString);
+                        totalRevenue += parseFloat(valueString);
                     }
                 }
             });
 
             data.push({
                 name: getMonthName(month),
-                Receitas: totalReceitas.toFixed(2),
-                Despesas: totalDespesas.toFixed(2)
+                Receitas: totalExpense.toFixed(2),
+                Despesas: totalRevenue.toFixed(2)
             });
         }
 
@@ -132,7 +132,7 @@ const Dashboard = () => {
                     <div className="content">
                         <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
-                        <p>{saudacao} Hoje é {dataFormatada}.</p>
+                        <p>{welcome} Hoje é {dataFormatada}.</p>
 
                         <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
                         <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>

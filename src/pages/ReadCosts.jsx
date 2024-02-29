@@ -42,12 +42,25 @@ const ReadCosts = () => {
     };
 
     const getValuesAndReturnToFinancialStatus = () => {
-        const debt = debts.find((d) => d.id === accountId && (d.type === 'Saída' || d.type === 'Receita'));
+        const filteredDebts = debts.filter(debt => debt.code === accountId && (debt.type === 'Entrada' || debt.type === 'Saída'));
 
-        if (debt) {
-            setFinancialStatus([...debt.financialStatus]);
-        }
-    }
+        let totalRevenue = 0;
+        let totalExpense = 0;
+
+        filteredDebts.forEach(debt => {
+            const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
+            if (debt.type === 'Saída') {
+                totalRevenue += parseFloat(valueString);
+            } else if (debt.type === 'Entrada') {
+                totalExpense += parseFloat(valueString);
+            }
+        });
+
+        const balance = totalRevenue - totalExpense;
+
+        const isNegative = balance < 0;
+        setFinancialStatus(isNegative);
+    };
 
     const deleteDebt = async (id) => {
         await postService.deleteAccount(id);
