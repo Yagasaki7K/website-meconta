@@ -69,7 +69,7 @@ const HelpMe = () => {
                     </p>
 
                     <h4>Como posso resetar a minha conta?</h4>
-                    <p>Através do contato pelo suporte através desse link, você estará enviando uma mensagem a um de nossos desenvolvedores
+                    <p>Através do <a href="https://api.whatsapp.com/send/?phone=5519998018174&text=Ol%C3%A1+estou+solicitando+o+resete+da+minha+MeConta.+Voc%C3%AA+pode+me+ajudar?&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">contato pelo suporte</a>, você estará enviando uma mensagem a um de nossos desenvolvedores
                         para solicitar o resete da conta. Para a sua segurança você não poderá fazer isso através da plataforma.
                         Será necessário apresentação de documentos para informar que a conta Google cadastrada pertence a você e após isso,
                         sua conta será limpa do sistema para novos cadastros.
@@ -79,7 +79,7 @@ const HelpMe = () => {
                         recuperada ou restaurada após essa ação.</p>
 
                     <h4>Como posso deletar a minha conta?</h4>
-                    <p>Através do contato pelo suporte através desse link, você estará enviando uma mensagem a um de nossos desenvolvedores
+                    <p>Através do <a href="https://api.whatsapp.com/send/?phone=5519998018174&text=Ol%C3%A1+estou+solicitando+a+exclusão+da+minha+MeConta.+Voc%C3%AA+pode+me+ajudar?&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">contato pelo suporte</a>, você estará enviando uma mensagem a um de nossos desenvolvedores
                         para solicitar a exclusão da conta de forma permanente. Para a sua segurança você não poderá fazer isso através da plataforma.
                         Será necessário apresentação de documentos para informar que a conta Google cadastrada pertence a você e após isso,
                         sua conta será deletada do sistema para novos cadastros.
@@ -121,6 +121,10 @@ const HelpMe = () => {
                         Negativo. Ao se conectar com o Google toda a segurança é deles e somente estamos vinculando a sua conta com as informações que você
                         passar na plataforma, como apenas o caso de cadastro de receitas e despesas.
                     </p>
+
+                    <h4>Realmente preciso entrar em contato</h4>
+                    <p>Para entrar em contato, é só <a href="https://api.whatsapp.com/send/?phone=5519998018174&text=Ol%C3%A1+estou+solicitando+o+suporte+da+MeConta.+Voc%C3%AA+pode+me+ajudar?&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">clicar aqui</a>. Assim você estará
+                        entrando em contato direto com o WhatsApp. E claro, vale lembrar que esse tipo de contato já releva que você leu todo o FAQ e ainda assim, não conseguiu ajuda para a sua dificuldade.</p>
                 </div>
             </SidepageDetails>
         )

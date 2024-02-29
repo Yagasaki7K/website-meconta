@@ -121,7 +121,7 @@ const Dashboard = () => {
                         </div>
 
                         <h4>Média de Gasto por Categoria Mensal</h4>
-                        <i className="advice">Iremos mostrar apenas as primeiras sete categorias cadastradas. Para ter um relatório completo, gere um PDF.</i>
+                        <i className="advice">Iremos mostrar apenas as primeiras sete categorias cadastradas. Veja o relatório completo no Relatório de Gastos</i>
                         <div style={{ width: 1300, height: 300 }}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <AreaChart width={500} height={400} data={datay} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
