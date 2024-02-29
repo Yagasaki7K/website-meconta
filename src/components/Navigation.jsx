@@ -2,6 +2,7 @@ import authService from '../../services/auth.service'
 import getUserNameUntilSpace from '../utils/getUserNameUntilSpace'
 import SidebarMenuDetails from './SidebarMenuDetails'
 import { useEffect, useState } from 'react'
+import VersionApp from './VersionApp'
 
 const Navigation = () => {
     const [hiddenUserMenu, setHiddenUserMenu] = useState(false)
@@ -12,7 +13,8 @@ const Navigation = () => {
     }
 
     function SignOut() {
-        return authService.signOutGoogle();
+        authService.signOutGoogle();
+        window.location.href = "/"
     }
 
     useEffect(() => {
@@ -91,7 +93,7 @@ const Navigation = () => {
                 <li onClick={SignOut}><i className="uil uil-signout" /> Logout</li>
             </ul>
             <div className="footer">
-                <p>v20240229 - Kindred Software</p>
+                <VersionApp />
             </div>
 
             <div className="sideMenu">
