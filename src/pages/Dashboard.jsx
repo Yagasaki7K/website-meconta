@@ -155,34 +155,55 @@ const Dashboard = () => {
                     <div className="content">
                         <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
-                        <p>{welcome} Hoje é {dataFormatada}.</p>
+                        <p className="welcome">{welcome} Hoje é {dataFormatada}.</p>
 
                         <h4>Total de Entrada em {month}: <span className="receitas">R${getTotalExpense()}</span></h4>
                         <h4 className="despesas">Total de Despesas em {month}: <span className="despesas">R${getTotalRevenue()}</span></h4>
 
-                        <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
-                        <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
-                        <div className="first-graph">
-                            <BarChart width={1300} height={300} data={generateData()}>
-                                <XAxis dataKey="name" stroke="var(--white)" />
-                                <YAxis stroke="var(--white)" />
-                                <Tooltip />
-                                <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
-                                <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
-                                <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
-                            </BarChart>
+                        <div className="mobile">
+                            <p>
+                                As funcionalidades no dispositivo móvel são limitadas apenas a adicionar entradas (receitas) e
+                                saídas (despesas) de valores, para ver relatórios e graficos, acesse o mesmo endereço pelo
+                                computador.
+                            </p>
+
+                            <p>Qualquer dúvida, consule a <a href="/ajuda">Central de Dúvidas</a> ou entre em contato com nosso suporte</p>
+
+                            <div className="buttons">
+                                <a href="/entrada" className="button receita">
+                                    <i className="uil uil-plus" /> Adicionar Receita
+                                </a>
+                                <a href="/saida" className="button despesa">
+                                    <i className="uil uil-minus" /> Adicionar Despesa
+                                </a>
+                            </div>
                         </div>
 
-                        <h4>Média de Gasto por Categoria Mensal</h4>
-                        <i className="advice">Iremos mostrar apenas as categorias cadastradas. Veja o relatório completo no Relatório de Gastos</i>
-                        <div className="first-graph">
-                            <BarChart width={1300} height={300} data={generateCategoryData()}>
-                                <XAxis dataKey="name" stroke="var(--white)" />
-                                <YAxis stroke="var(--white)" />
-                                <Tooltip />
-                                <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
-                                <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
-                            </BarChart>
+                        <div className="graphs">
+                            <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
+                            <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
+                            <div className="first-graph">
+                                <BarChart width={1300} height={300} data={generateData()}>
+                                    <XAxis dataKey="name" stroke="var(--white)" />
+                                    <YAxis stroke="var(--white)" />
+                                    <Tooltip />
+                                    <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
+                                    <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
+                                    <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
+                                </BarChart>
+                            </div>
+
+                            <h4>Média de Gasto por Categoria Mensal</h4>
+                            <i className="advice">Iremos mostrar apenas as categorias cadastradas. Veja o relatório completo no Relatório de Gastos</i>
+                            <div className="first-graph">
+                                <BarChart width={1300} height={300} data={generateCategoryData()}>
+                                    <XAxis dataKey="name" stroke="var(--white)" />
+                                    <YAxis stroke="var(--white)" />
+                                    <Tooltip />
+                                    <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
+                                    <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />
+                                </BarChart>
+                            </div>
                         </div>
                     </div>
                 </DashboardDetails>

@@ -9,6 +9,10 @@ const ModalDetails = styled.div`
     padding-bottom: 14.9rem;
     overflow: hidden;
 
+    @media (max-width: 1024px) {
+        padding-top: 4rem;
+    }
+
     .modal-content {
         background: var(--background-alt);
         border-radius: 8px;

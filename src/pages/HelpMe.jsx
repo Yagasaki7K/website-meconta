@@ -125,6 +125,8 @@ const HelpMe = () => {
                     <h4>Realmente preciso entrar em contato</h4>
                     <p>Para entrar em contato, é só <a href="https://api.whatsapp.com/send/?phone=5519998018174&text=Ol%C3%A1+estou+solicitando+o+suporte+da+MeConta.+Voc%C3%AA+pode+me+ajudar?&type=phone_number&app_absent=0" target="_blank" rel="noreferrer">clicar aqui</a>. Assim você estará
                         entrando em contato direto com o WhatsApp. E claro, vale lembrar que esse tipo de contato já releva que você leu todo o FAQ e ainda assim, não conseguiu ajuda para a sua dificuldade.</p>
+
+                    <p className="mobile">&nbsp;</p>
                 </div>
             </SidepageDetails>
         )

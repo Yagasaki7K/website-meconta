@@ -15,6 +15,7 @@ const SidebarMenuDetails = styled.div`
     @media (max-width: 1024px) {
         background: transparent;
         width: 0.1rem;
+        z-index: 2;
     }
 
     a, li, p {
@@ -100,7 +101,7 @@ const SidebarMenuDetails = styled.div`
     }
 
     .sideMenu {
-        .addBtn, .removeBtn, .helpBtn, .logoBtn, .costsBtn {
+        .addBtn, .removeBtn, .helpBtn, .logoBtn, .costsBtn, .homeBtn {
             position: fixed;
             width: 60px;
             height: 60px;
@@ -118,7 +119,7 @@ const SidebarMenuDetails = styled.div`
             text-align: center;
         }
 
-        .addBtn:hover, .removeBtn:hover, .helpBtn:hover, .logoBtn:hover, .costsBtn:hover {
+        .addBtn:hover, .removeBtn:hover, .helpBtn:hover, .logoBtn:hover, .costsBtn:hover, .homeBtn:hover {
             filter: brightness(70%)
         }
 
@@ -126,30 +127,60 @@ const SidebarMenuDetails = styled.div`
             right: 30px;
             bottom: 240px;
             background: var(--purple);
+
+            @media (max-width: 1024px) {
+                display: none;
+            }
+        }
+
+        .homeBtn {
+            right: 30px;
+            bottom: 240px;
+            background: var(--purple);
+
+            @media (max-width: 1024px) {
+                right: 20px;
+            }
         }
 
         .addBtn {
             right: 30px;
             bottom: 170px;
             background: var(--green);
+
+            @media (max-width: 1024px) {
+                right: 20px;
+            }
         }
 
         .removeBtn {
             right: 30px;
             bottom: 100px;
             background: var(--red);
+
+            @media (max-width: 1024px) {
+                right: 20px;
+            }
         }
 
         .helpBtn {
             right: 100px;
             bottom: 30px;
             background: var(--blue);
+
+            @media (max-width: 1024px) {
+                right: 90px;
+            }
         }
 
         .logoBtn {
             right: 30px;
             bottom: 30px;
             background: var(--orange);
+
+            @media (max-width: 1024px) {
+                right: 20px;
+            }
         }
     }
 

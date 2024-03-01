@@ -9,6 +9,10 @@ const SidepageDetails = styled.div`
     @media (max-width: 1024px) {
         margin-left: 0;
         width: 85%;
+
+        .mobile {
+            margin-top: 2rem;
+        }
     }
 
     h4 {

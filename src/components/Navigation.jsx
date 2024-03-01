@@ -55,6 +55,10 @@ const Navigation = () => {
         window.location.href = "/gastos"
     }
 
+    function handleModalHome() {
+        window.location.href = "/"
+    }
+
     const slug = window.location.pathname
 
     // eslint-disable-next-line react/prop-types
@@ -99,6 +103,7 @@ const Navigation = () => {
             <div className="sideMenu">
                 {hiddenUserMenu ? (
                     <>
+                        <button className="homeBtn" onClick={handleModalHome}><i className="uil uil-home" /></button>
                         <button className="costsBtn" onClick={handleModalCosts}><i className="uil uil-usd-circle" /></button>
                         <button className="addBtn" onClick={handleModalAdded}><i className="uil uil-plus-circle" /></button>
                         <button className="removeBtn" onClick={handleModalRemoved}><i className="uil uil-minus-circle" /></button>
