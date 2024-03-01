@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation"
 import SidepageDetails from "../components/SidepageDetails"
 import authService from "../../services/auth.service";
+import LogoMobile from "../components/LogoMobile";
 
 const HelpMe = () => {
     const [render, setRender] = useState(false)
@@ -38,6 +39,8 @@ const HelpMe = () => {
                 <Navigation />
 
                 <div className="content">
+                    <LogoMobile />
+
                     <h1><i className="uil uil-question-circle" /> Central de Dúvidas</h1>
 
                     <h4>Como posso cadastrar um gasto que eu tive?</h4>

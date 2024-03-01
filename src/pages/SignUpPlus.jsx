@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation"
 import postService from "../../services/post.service"
 import { toast } from "sonner"
 import authService from "../../services/auth.service"
+import LogoMobile from "../components/LogoMobile"
 
 const SignUpPlus = () => {
     const [render, setRender] = useState(false)
@@ -90,6 +91,8 @@ const SignUpPlus = () => {
                 <Navigation />
                 <ModalDetails>
                     <div className="modal-content">
+                        <LogoMobile />
+
                         <h3 className="plus">Adicionar Entrada</h3>
                         <i>Entrada são valores que entraram na conta</i>
 

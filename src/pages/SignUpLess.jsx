@@ -5,6 +5,7 @@ import ModalDetails from "../components/ModalDetails"
 import Navigation from "../components/Navigation"
 import postService from "../../services/post.service";
 import { toast } from "sonner";
+import LogoMobile from "../components/LogoMobile";
 
 const SignUpLess = () => {
     const [Render, setRender] = useState(false)
@@ -90,7 +91,10 @@ const SignUpLess = () => {
             <>
                 <Navigation />
                 <ModalDetails>
+
                     <div className="modal-content">
+                        <LogoMobile />
+
                         <h3 className="less">Adicionar Saída</h3>
                         <i>Saída são valores que saíram de sua conta</i>
 

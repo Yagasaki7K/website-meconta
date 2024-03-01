@@ -12,7 +12,7 @@ const SidepageDetails = styled.div`
 
         .mobile {
             margin-top: 2rem;
-        }
+        }        
     }
 
     h4 {

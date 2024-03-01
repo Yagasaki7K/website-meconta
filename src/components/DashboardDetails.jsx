@@ -22,10 +22,20 @@ const DashboardDetails = styled.div`
 
     .despesas {
         margin-top: -0.3rem;
+
+        @media (max-width: 1024px) {
+            margin-top: 0;
+        }
     }
 
     .mobile {
         display: none;
+
+        @media (max-width: 400px) {
+            .helpMe {
+                display: none
+            }
+        }
 
         @media (max-width: 1024px) {
             display: block;
@@ -48,6 +58,10 @@ const DashboardDetails = styled.div`
                 align-items: center;
                 text-align: center;
                 margin-top: 2rem;
+
+                @media (max-width: 400px) {
+                    display: none
+                }
 
                 .despesa {
                     background: var(--red);
@@ -75,6 +89,10 @@ const DashboardDetails = styled.div`
                     &:hover {
                         filter: brightness(80%);
                     }   
+                }
+
+                .mobile {
+                    margin-bottom: 3rem;
                 }
             }
         }

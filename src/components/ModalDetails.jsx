@@ -10,7 +10,7 @@ const ModalDetails = styled.div`
     overflow: hidden;
 
     @media (max-width: 1024px) {
-        padding-top: 4rem;
+        padding-top: 5rem;
     }
 
     .modal-content {
@@ -23,6 +23,11 @@ const ModalDetails = styled.div`
         justify-content: center;
         align-items: left;
         text-align: left;
+
+        @media (max-width: 1024px) {
+            text-align: center;
+        }
+
         flex-direction: column;
 
         .less {

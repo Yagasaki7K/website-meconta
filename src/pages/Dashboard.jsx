@@ -4,6 +4,7 @@ import DashboardDetails from '../components/DashboardDetails'
 import Navigation from '../components/Navigation'
 import { BarChart, YAxis, XAxis, Tooltip, CartesianGrid, Bar } from 'recharts';
 import postService from '../../services/post.service'
+import LogoMobile from '../components/LogoMobile';
 
 const Dashboard = () => {
     const date = new Date();
@@ -153,6 +154,8 @@ const Dashboard = () => {
                 <Navigation name={accountName} />
                 <DashboardDetails>
                     <div className="content">
+                        <LogoMobile />
+
                         <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
                         <p className="welcome">{welcome} Hoje é {dataFormatada}.</p>
@@ -167,7 +170,16 @@ const Dashboard = () => {
                                 computador.
                             </p>
 
-                            <p>Qualquer dúvida, consule a <a href="/ajuda">Central de Dúvidas</a> ou entre em contato com nosso suporte</p>
+                            <p>
+                                Você também pode navegar pelo menu de navegação que criamos para melhorar sua experiência, ele se encontra
+                                no rodapé da aplicação.
+                            </p>
+
+                            <p>Por ali, você consegue ter acesso ao Inicio, Adicionar Receita e Adicionar Despesas,
+                                de uma maneira muito fácil, prática e rápido!
+                            </p>
+
+                            <p className="helpMe">Qualquer dúvida, consulte a <a href="/ajuda">Central de Dúvidas</a> ou entre em contato com nosso suporte</p>
 
                             <div className="buttons">
                                 <a href="/entrada" className="button receita">
