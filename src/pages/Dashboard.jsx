@@ -35,12 +35,39 @@ const Dashboard = () => {
         setDebts(originalDebts);
     };
 
+    const getTotalExpense = () => {
+        let total = 0;
+
+        debts.forEach(debt => {
+            if (debt.type === 'Entrada' && debt.code === accountId) {
+                const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
+                total += parseFloat(valueString);
+            }
+        });
+
+        return total.toFixed(2);
+    }
+    const getTotalRevenue = () => {
+        let total = 0;
+
+        debts.forEach(debt => {
+            if (debt.type === 'Saída' && debt.code === accountId) {
+                const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
+                total += parseFloat(valueString);
+            }
+        });
+
+        return total.toFixed(2);
+    }
+
     const generateData = () => {
         const data = [];
 
-        for (let month = 1; month <= 12; month++) {
+        for (let month = 0; month <= 11; month++) {
             let totalExpense = 0;
             let totalRevenue = 0;
+
+            console.log(debts)
 
             debts.forEach(debt => {
                 const debtDate = new Date(debt.date);
@@ -59,7 +86,7 @@ const Dashboard = () => {
             });
 
             data.push({
-                name: getMonthName(month),
+                name: meses[month],
                 Receitas: totalExpense.toFixed(2),
                 Despesas: totalRevenue.toFixed(2)
             });
@@ -67,6 +94,7 @@ const Dashboard = () => {
 
         return data;
     };
+
 
     const generateCategoryData = () => {
         const data = [];
@@ -77,7 +105,7 @@ const Dashboard = () => {
             const debtMonth = debtDate.getMonth() + 1;
             const debtYear = debtDate.getFullYear();
 
-            if (debtMonth === date.getMonth() + 1 && debtYear === date.getFullYear() && debt.type === 'Saída' && debt.code === accountId) {
+            if (debtMonth === date.getMonth() && debtYear === date.getFullYear() && debt.type === 'Saída' && debt.code === accountId) {
                 if (!categories[debt.category]) {
                     categories[debt.category] = 0;
                 }
@@ -97,11 +125,6 @@ const Dashboard = () => {
         return data;
     };
 
-
-    const getMonthName = (monthNumber) => {
-        const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-        return monthNames[monthNumber - 1];
-    };
 
     useEffect(() => {
         checkAuth()
@@ -133,6 +156,9 @@ const Dashboard = () => {
                         <h1 className="title"><i className="uil uil-arrow-growth" /> Dashboard</h1>
 
                         <p>{welcome} Hoje é {dataFormatada}.</p>
+
+                        <h4>Total de Entrada em {month}: <span className="receitas">R${getTotalExpense()}</span></h4>
+                        <h4 className="despesas">Total de Despesas em {month}: <span className="despesas">R${getTotalRevenue()}</span></h4>
 
                         <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
                         <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>

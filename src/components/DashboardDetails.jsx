@@ -6,6 +6,18 @@ const DashboardDetails = styled.div`
 
     h4 {
         margin-top: 1rem;
+        
+        .receitas {
+            color: var(--green);
+        }
+
+        .despesas {
+            color: var(--red);
+        }
+    }
+
+    .despesas {
+        margin-top: -0.3rem;
     }
 
     .first-graph {
