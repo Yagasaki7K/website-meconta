@@ -51,10 +51,11 @@ const ModalDetails = styled.div`
             margin-top: 1rem;
         }
 
-        input, select, input {
+        input, select {
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
             padding: 6px;
+            width: 270px;
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             outline: none;
@@ -63,6 +64,10 @@ const ModalDetails = styled.div`
             color: var(--white);
         }
 
+        select {
+            width: 282px;
+        }
+    
         input:focus, select:focus, input[type="date"]:focus {
             border: 1px solid rgba(0, 0, 0, 0.2);
         }
