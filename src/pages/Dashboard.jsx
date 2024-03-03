@@ -68,33 +68,32 @@ const Dashboard = () => {
             let totalExpense = 0;
             let totalRevenue = 0;
 
-            console.log(debts)
-
             debts.forEach(debt => {
                 const debtDate = new Date(debt.date);
-                const debtMonth = debtDate.getMonth() + 1;
+                const debtMonth = parseInt(debt.date.split('-')[1], 10) - 1;
                 const debtYear = debtDate.getFullYear();
 
-                if (debtMonth === month && debtYear === 2024 && debt.code === accountId) {
+                if (debtMonth === parseInt(month, 10) && debtYear === 2024 && debt.code === accountId) {
                     if (debt.type === 'Entrada') {
                         const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
-                        totalExpense += parseFloat(valueString);
+                        totalRevenue += parseFloat(valueString);
                     } else if (debt.type === 'Saída') {
                         const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
-                        totalRevenue += parseFloat(valueString);
+                        totalExpense += parseFloat(valueString);
                     }
                 }
             });
 
             data.push({
                 name: meses[month],
-                Receitas: totalExpense.toFixed(2),
-                Despesas: totalRevenue.toFixed(2)
+                Receitas: totalRevenue.toFixed(2),
+                Despesas: totalExpense.toFixed(2)
             });
         }
 
         return data;
     };
+
 
 
     const generateCategoryData = () => {

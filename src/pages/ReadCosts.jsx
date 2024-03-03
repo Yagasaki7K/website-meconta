@@ -143,7 +143,7 @@ const ReadCosts = () => {
                 <hr />
                 <h3>Com base nos valores que gastou nesse mês, recomendamos que você&nbsp;
                     {
-                        financialStatus > 0 ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
+                        financialStatus ? <span className="green">FIQUE TRANQUILO!</span> : <span className="red">ECONOMIZE!</span>
                     }
                 </h3>
                 <div className="content-debts">
