@@ -5,6 +5,7 @@ import SignUpLess from './pages/SignUpLess'
 import SignUpCategories from './pages/SignUpCategories'
 import ReadCosts from './pages/ReadCosts'
 import HelpMe from './pages/HelpMe'
+import FreeHelpMe from './pages/FreeHelpMe'
 import Home from './pages/Home'
 import './index.css'
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/saida" element={<SignUpLess />} exact />
             <Route path="/gastos" element={<ReadCosts />} exact />
             <Route path="/ajuda" element={<HelpMe />} exact />
+            <Route path="/duvidas" element={<FreeHelpMe />} exact />
         </Routes>
     )
 }

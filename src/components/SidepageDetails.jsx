@@ -147,6 +147,34 @@ const SidepageDetails = styled.div`
             } */
         }
     }
+
+    button {
+        color: var(--white);
+        background: var(--green);
+        
+        border-radius: 50px;
+        border: none;
+        padding: 1rem;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        cursor: pointer;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        img {
+            width: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            opacity: 0.8;
+            transition: 2s;
+            background: #1c3912;
+        }
+    }
 `
 
 export default SidepageDetails
