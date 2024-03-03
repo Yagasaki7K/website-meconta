@@ -42,17 +42,14 @@ const HelpMe = () => {
 
                 <h4>Cadastrei um gasto ou receita errado, o que fazer?</h4>
                 <p>
-                    Vá no <b>Relatório de Gastos</b> localizado no menu lateral ou se estiver pelo celular, você poderá clicar
+                    Vá no <b>Relatório de Gastos</b> localizado no menu lateral através do computador, ali você poderá clicar
                     no menu, um botão no rodapé com três pontos e clicar no cifrão (roxo) e através
                     dele você verá todo o relatório do mês (você pode filtrar para o mês desejado) e poderá deletar despesas
                     que foram inseridas de maneiras incorretas. Deletar uma despesa ou receita,
                     irá refletir no gráfico e no documento do relatório, caso faça o download.
                 </p>
 
-                <p>
-                    Lembre-se que só será possível deletar uma despesa ou receita que foi inserida no mês atual. Despesas erradas nos meses
-                    anteriores não podem ser deletadas.
-                </p>
+                <p>Não é possível deletar através do CELULAR. E lembre-se que só será possível deletar uma despesa ou receita que foi inserida no mês atual. Despesas erradas nos meses anteriores não podem ser deletadas. <a href="mailto:suportekindred@gmail.com" target="_blank" rel="noreferrer">Contate o suporte</a> se isso for realmente necessário.</p>
 
                 <h4>Como posso resetar a minha conta?</h4>
                 <p>Através do <a href="mailto:suportekindred@gmail.com" target="_blank" rel="noreferrer">contato pelo suporte</a>, você estará enviando uma mensagem a um de nossos desenvolvedores

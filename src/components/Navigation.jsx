@@ -56,7 +56,7 @@ const Navigation = () => {
     }
 
     function handleModalHome() {
-        window.location.href = "/"
+        window.location.href = "/dashboard"
     }
 
     const slug = window.location.pathname
