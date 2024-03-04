@@ -142,9 +142,10 @@ const SidepageDetails = styled.div`
             border-radius: 5px;
             outline: none;
 
-            /* &:hover {
-                filter: brightness(80%);
-            } */
+            &:hover {
+                /* filter: brightness(80%); */
+                background: var(--gray);
+            }
         }
     }
 

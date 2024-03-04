@@ -54,16 +54,16 @@ const Home = () => {
                 <h1>Vantagens do Plano Premium</h1>
 
                 <ul>
-                    <li>&#10003; Gestão de gastos</li>
                     <li>&#10003; Download de Relatórios (PDF)</li>
                     <li>&#10003; Suporte Imediato via WhatsApp</li>
+                    <li>&#10003; Tema Claro Disponível!</li>
                 </ul>
             </div> */}
 
             <div className="copyright">
                 <p>Copyright © 2024 MeConta by Kindred Software</p>
             </div>
-        </HomeDetails >
+        </HomeDetails>
     )
 }
 
