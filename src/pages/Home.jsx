@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import authService from '../../services/auth.service'
+import authService from '../services/auth.service'
 import HomeDetails from '../components/HomeDetails'
 import VersionApp from "../components/VersionApp";
 

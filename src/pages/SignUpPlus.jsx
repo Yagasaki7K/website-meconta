@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import ModalDetails from "../components/ModalDetails"
 import Navigation from "../components/Navigation"
-import postService from "../../services/post.service"
+import postService from "../services/post.service"
 import { toast } from "sonner"
-import authService from "../../services/auth.service"
+import authService from "../services/auth.service"
 import LogoMobile from "../components/LogoMobile"
 
 const SignUpPlus = () => {

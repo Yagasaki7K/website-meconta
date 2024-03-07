@@ -1,4 +1,4 @@
-import authService from '../../services/auth.service'
+import authService from '../services/auth.service'
 import getUserNameUntilSpace from '../utils/getUserNameUntilSpace'
 import SidebarMenuDetails from './SidebarMenuDetails'
 import { useEffect, useState } from 'react'

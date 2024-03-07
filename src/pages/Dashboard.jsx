@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import authService from '../../services/auth.service';
+import authService from '../services/auth.service';
 import DashboardDetails from '../components/DashboardDetails'
 import Navigation from '../components/Navigation'
 import { BarChart, YAxis, XAxis, Tooltip, CartesianGrid, Bar } from 'recharts';
-import postService from '../../services/post.service'
+import postService from '../services/post.service'
 import LogoMobile from '../components/LogoMobile';
 
 const Dashboard = () => {

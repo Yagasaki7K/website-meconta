@@ -1,7 +1,7 @@
 import SidepageDetails from "../components/SidepageDetails"
 import LogoMobile from "../components/LogoMobile";
 import { useEffect } from "react";
-import authService from "../../services/auth.service";
+import authService from "../services/auth.service";
 
 const HelpMe = () => {
 

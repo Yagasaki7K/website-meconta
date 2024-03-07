@@ -5,7 +5,7 @@ import {
     onAuthStateChanged,
 } from "firebase/auth";
 import { query, where, collection, getDocs } from "firebase/firestore";
-import { auth, database } from "../client";
+import { auth, database } from "../../client";
 
 const permissionsCollectionRef = collection(database, "permissions");
 

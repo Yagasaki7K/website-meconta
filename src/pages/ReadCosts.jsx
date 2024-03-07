@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation"
-import authService from "../../services/auth.service";
-import postService from "../../services/post.service";
+import authService from "../services/auth.service";
+import postService from "../services/post.service";
 import SidepageDetails from "../components/SidepageDetails"
 import getUserNameUntilSpace from "../utils/getUserNameUntilSpace";
 import getDateAndFormatHim from "../utils/getDateAndFormatHim";

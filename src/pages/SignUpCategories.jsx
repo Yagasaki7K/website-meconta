@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Navigation from "../components/Navigation"
-import authService from "../../services/auth.service";
+import authService from "../services/auth.service";
 
 const SignUpCategories = () => {
     const [render, setRender] = useState(false)
