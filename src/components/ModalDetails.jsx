@@ -8,6 +8,7 @@ const ModalDetails = styled.div`
     padding-top: 14.9rem;
     padding-bottom: 14.9rem;
     overflow: hidden;
+    color: var(--black);
 
     @media (max-width: 1024px) {
         padding-top: 5rem;
@@ -102,11 +103,13 @@ const ModalDetails = styled.div`
         
         .send {
             background: var(--green);
+            color: #fff;
         }
 
         .clear {
             background: var(--yellow);
             margin-left: 0.5rem;
+            color: #fff;
         }
     }
 

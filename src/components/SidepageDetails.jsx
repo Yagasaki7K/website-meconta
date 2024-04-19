@@ -5,6 +5,7 @@ const SidepageDetails = styled.div`
     padding: 1rem 2rem;
     width: 65%;
     font-family: 'Poppins', sans-serif;
+    color: var(--black);
 
     @media (max-width: 1024px) {
         margin-left: 0;
@@ -13,6 +14,10 @@ const SidepageDetails = styled.div`
         .mobile {
             margin-top: 2rem;
         }        
+    }
+
+    h1 {
+        color: var(--black);
     }
 
     h4 {
@@ -63,7 +68,7 @@ const SidepageDetails = styled.div`
             width: 100%;
             padding: 10px;
             background: var(--background-alt);
-            color: var(--white);
+            color: var(--black);
             font-size: 14px;
             margin-bottom: 1rem;
         }
@@ -132,7 +137,7 @@ const SidepageDetails = styled.div`
             /* FIXME: Delete comments if report button is working */
             /* background: var(--purple); */
             background: var(--gray);
-            color: var(--white);
+            color: #fff;
             /* cursor: pointer; */
             cursor: not-allowed;
             transition: background-color 0.3s ease;

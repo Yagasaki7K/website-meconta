@@ -20,7 +20,7 @@ const SidebarMenuDetails = styled.div`
 
     a, li, p {
         text-decoration: none;
-        color: var(--white);
+        color: var(--black);
         font-family: 'Poppins', sans-serif;
     }
 
@@ -107,7 +107,7 @@ const SidebarMenuDetails = styled.div`
             height: 60px;
             border-radius: 30px;
             border: none;
-            color: var(--white);
+            color: #fff;
             z-index: 20;
             font-size: 1.7rem;
             cursor: pointer;

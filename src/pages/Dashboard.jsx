@@ -195,8 +195,8 @@ const Dashboard = () => {
                             <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
                             <div className="first-graph">
                                 <BarChart width={1300} height={300} data={generateData()}>
-                                    <XAxis dataKey="name" stroke="var(--white)" />
-                                    <YAxis stroke="var(--white)" />
+                                    <XAxis dataKey="name" stroke="var(--black)" />
+                                    <YAxis stroke="var(--black)" />
                                     <Tooltip />
                                     <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
                                     <Bar dataKey="Receitas" fill="var(--green)" barSize={30} />
@@ -208,8 +208,8 @@ const Dashboard = () => {
                             <i className="advice">Iremos mostrar apenas as categorias cadastradas. Veja o relatório completo no Relatório de Gastos</i>
                             <div className="first-graph">
                                 <BarChart width={1300} height={300} data={generateCategoryData()}>
-                                    <XAxis dataKey="name" stroke="var(--white)" />
-                                    <YAxis stroke="var(--white)" />
+                                    <XAxis dataKey="name" stroke="var(--black)" />
+                                    <YAxis stroke="var(--black)" />
                                     <Tooltip />
                                     <CartesianGrid stroke="var(--gray)" strokeDasharray="3 3" />
                                     <Bar dataKey="Despesas" fill="var(--red)" barSize={30} />

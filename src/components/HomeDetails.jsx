@@ -78,6 +78,7 @@ const HomeDetails = styled.div`
                     border-radius: 5px;
                     color: #fff;
                     text-decoration: none;
+                    cursor: pointer;
 
                     &:hover {
                         filter: brightness(80%);
@@ -85,6 +86,10 @@ const HomeDetails = styled.div`
 
                     a {
                         color: #fff;
+
+                        &:hover {
+                            color: #fff;
+                        }
                     }
 
                     @media (max-width: 768px) {

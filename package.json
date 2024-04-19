@@ -7,9 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "yagasaki": "yarn upgrade-interactive --latest",
     "preview": "vite preview",
-    "commit": "yarn run yagasaki && yarn run build && read -p 'Descriptions Commit: ' message && git add . && echo -n \"$message - \" && node getTime.js | xargs -I {} git commit -m \"$message - {}\" && git push"
+    "commit": "bun update && bun run build && read -p 'Descriptions Commit: ' message && git add . && echo -n \"$message - \" && node getTime.js | xargs -I {} git commit -m \"$message - {}\" && git push"
   },
   "dependencies": {
     "@radix-ui/themes": "^3.0.2",

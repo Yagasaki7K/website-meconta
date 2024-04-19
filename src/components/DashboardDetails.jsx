@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const DashboardDetails = styled.div`
     margin-left: 20rem;
     padding: 1rem 2rem;
+    color: var(--black);
 
     @media (max-width: 1024px) {
         margin-left: 0;
@@ -10,6 +11,7 @@ const DashboardDetails = styled.div`
 
     h4 {
         margin-top: 1rem;
+        
         
         .receitas {
             color: var(--green);
