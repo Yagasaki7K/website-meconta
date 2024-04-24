@@ -17,9 +17,9 @@ const Home = () => {
         return authService.signInGoogle()
     }
 
-    function downloadApp() {
-        window.location.href = 'https://github.com/Yagasaki7K/website-meconta/raw/main/meconta.apk'
-    }
+    // function downloadApp() {
+    //     window.location.href = 'https://github.com/Yagasaki7K/website-meconta/raw/main/meconta.apk'
+    // }
 
     return (
         <HomeDetails>
@@ -53,7 +53,7 @@ const Home = () => {
                         </div>
 
                         <button className="signUpButton" onClick={sendGoogleReq}>Abrir uma conta <i className="uil uil-arrow-right" /></button>
-                        <button className="signUpButton" onClick={downloadApp}>Download do App <i className="uil uil-arrow-right" /></button>
+                        {/* <button className="signUpButton" onClick={downloadApp}>Download do App <i className="uil uil-arrow-right" /></button> */}
                     </div>
                     <div className="rightContent">
                         <img src="https://cdn-icons-png.flaticon.com/512/218/218390.png" alt="" />
