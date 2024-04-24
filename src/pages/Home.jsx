@@ -17,6 +17,10 @@ const Home = () => {
         return authService.signInGoogle()
     }
 
+    function downloadApp() {
+        window.location.href = 'https://github.com/Yagasaki7K/website-meconta/raw/main/meconta.apk'
+    }
+
     return (
         <HomeDetails>
             <div className="content">
@@ -26,6 +30,7 @@ const Home = () => {
                         <li><a href="/duvidas">Benefícios</a></li>
                         <li><a href="/ajuda">Conta Digital</a></li>
                         <li><a href="/ajuda">Suporte</a></li>
+                        <li><a href="/ajuda">Download do App</a></li>
                         <li className="signInButton" onClick={sendGoogleReq}>Entrar</li>
                         <li className="signUpButton"><a onClick={sendGoogleReq}>Abrir conta</a></li>
                     </ul>
@@ -48,6 +53,7 @@ const Home = () => {
                         </div>
 
                         <button className="signUpButton" onClick={sendGoogleReq}>Abrir uma conta <i className="uil uil-arrow-right" /></button>
+                        <button className="signUpButton" onClick={downloadApp}>Download do App <i className="uil uil-arrow-right" /></button>
                     </div>
                     <div className="rightContent">
                         <img src="https://cdn-icons-png.flaticon.com/512/218/218390.png" alt="" />

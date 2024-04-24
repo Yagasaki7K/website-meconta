@@ -81,7 +81,7 @@ const HomeDetails = styled.div`
                     cursor: pointer;
 
                     &:hover {
-                        filter: brightness(80%);
+                        filter: brightness(110%);
                     }
 
                     a {
@@ -153,9 +153,10 @@ const HomeDetails = styled.div`
                     margin-top: 2rem;
                     cursor: pointer;
                     border: none;
+                    margin-right: 1rem;
 
                     &:hover {
-                        filter: brightness(80%);
+                        filter: brightness(110%);
                     }
                 }
 
