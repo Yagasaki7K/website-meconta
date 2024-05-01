@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">meconta</string>
-    <string name="title_activity_main">meconta</string>
-    <string name="package_name">com.kalify.meconta</string>
-    <string name="custom_url_scheme">com.kalify.meconta</string>
-</resources>
