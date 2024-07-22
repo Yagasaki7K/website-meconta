@@ -155,7 +155,7 @@ const SidepageDetails = styled.div`
     }
 
     button {
-        color: var(--white);
+        color: var(--white-alt);
         background: var(--green);
         
         border-radius: 50px;
@@ -178,7 +178,6 @@ const SidepageDetails = styled.div`
         &:hover {
             opacity: 0.8;
             transition: 2s;
-            background: #1c3912;
         }
     }
 `

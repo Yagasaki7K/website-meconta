@@ -174,7 +174,7 @@ const HomeDetails = styled.div`
 
                             i {
                                 color: var(--green);
-                                margin-right: 1rem;
+                                margin-right: 0.5rem;
                             }
                         }
                     }

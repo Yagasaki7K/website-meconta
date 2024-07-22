@@ -30,7 +30,7 @@ const Home = () => {
                         <li><a href="/duvidas">Benefícios</a></li>
                         <li><a href="/ajuda">Conta Digital</a></li>
                         <li><a href="/ajuda">Suporte</a></li>
-                        <li><a href="/ajuda">Download do App</a></li>
+                        {/* <li><a href="/ajuda">Download do App</a></li> */}
                         <li className="signInButton" onClick={sendGoogleReq}>Entrar</li>
                         <li className="signUpButton"><a onClick={sendGoogleReq}>Abrir conta</a></li>
                     </ul>

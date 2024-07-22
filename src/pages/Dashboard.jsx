@@ -40,7 +40,7 @@ const Dashboard = () => {
         let total = 0;
 
         debts.forEach(debt => {
-            if (debt.type === 'Entrada' && debt.code === accountId) {
+            if (debt.type === 'Entrada' && debt.code === accountId && debt.month === month && debt.year === year) {
                 const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
                 total += parseFloat(valueString);
             }
@@ -52,7 +52,7 @@ const Dashboard = () => {
         let total = 0;
 
         debts.forEach(debt => {
-            if (debt.type === 'Saída' && debt.code === accountId) {
+            if (debt.type === 'Saída' && debt.code === accountId && debt.month === month && debt.year === year) {
                 const valueString = debt.value.replace('R$', '').replace('.', '').replace(',', '.');
                 total += parseFloat(valueString);
             }
@@ -191,7 +191,7 @@ const Dashboard = () => {
                         </div>
 
                         <div className="graphs">
-                            <h4>Gasto Mensal de {new Date().getFullYear()}</h4>
+                            <h4>Gasto Total dos Meses de {new Date().getFullYear()}</h4>
                             <i className="advice">O gráfico é baseado no valor total de despesas e receitas no mês relacionado.</i>
                             <div className="first-graph">
                                 <BarChart width={1300} height={300} data={generateData()}>
@@ -204,7 +204,7 @@ const Dashboard = () => {
                                 </BarChart>
                             </div>
 
-                            <h4>Média de Gasto por Categoria Mensal</h4>
+                            <h4>Média de Gasto por Categoria</h4>
                             <i className="advice">Iremos mostrar apenas as categorias cadastradas. Veja o relatório completo no Relatório de Gastos</i>
                             <div className="first-graph">
                                 <BarChart width={1300} height={300} data={generateCategoryData()}>

@@ -96,7 +96,7 @@ const SignUpLess = () => {
                         <LogoMobile />
 
                         <h3 className="less">Adicionar Saída</h3>
-                        <i>Saída são valores que saíram de sua conta</i>
+                        <i>Saída são os gastos de sua conta</i>
 
                         <label htmlFor="label">Qual é o nome da despesa?</label>
                         <input type="text" name="label" value={Label} placeholder="Salgado do Beto" onChange={event => setLabel(event.target.value)} />
@@ -123,7 +123,6 @@ const SignUpLess = () => {
                             <button className="send" onClick={AddReceiptToAccount}>Enviar</button>
                             <button className="clear" onClick={EraseReceiptToAccount}>Limpar</button>
                         </div>
-
                     </div>
                 </ModalDetails>
             </>

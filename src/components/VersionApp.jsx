@@ -1,6 +1,6 @@
 const VersionApp = () => {
     return (
-        <p className="version">v20240303 - Kindred Software</p>
+        <p className="version">v20240722 - Kindred Software</p>
     )
 }
 

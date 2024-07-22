@@ -9,7 +9,9 @@
     --red: #e68284;
     --white: #fff;
     --gray: #dadde7;
+    --gray-alt: #aaa;
     --black: #232634;
+    --white-alt: #fff;
 }
 
 @media (prefers-color-scheme: dark) {

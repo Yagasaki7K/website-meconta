@@ -45,7 +45,7 @@ const ModalDetails = styled.div`
 
         i {
             font-size: 0.8rem;
-            color: var(--gray);
+            color: var(--gray-alt);
         }
 
         label {
@@ -62,7 +62,7 @@ const ModalDetails = styled.div`
             outline: none;
             transition: border-color 0.3s ease;
             background: var(--background);
-            color: var(--white);
+            color: var(--black);
         }
 
         select {

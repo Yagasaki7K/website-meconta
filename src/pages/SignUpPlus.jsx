@@ -108,7 +108,7 @@ const SignUpPlus = () => {
                         </select>
 
                         <label htmlFor="date">Informe a data</label>
-                        <input type="date" name="date" value={date} onChange={event => setDate(event.target.value)} />
+                        <input type="date" name="date" id="date" value={date.split('/').reverse().join('-')} onChange={event => setDate(event.target.value)} />
 
                         <label htmlFor="value">Informe o valor</label>
                         <input type="text" name="value" value={value} onChange={handleInputMoney} placeholder="R$ 1.000,00" />
